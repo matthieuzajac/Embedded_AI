@@ -1,7 +1,7 @@
 import serial
 import numpy as np
 
-PORT = "/dev/tty.usbmodem1422303"
+PORT = "COM3"
 
 
 def synchronise_UART(serial_port):
