@@ -58,6 +58,19 @@
 #include "mnist_data.h"
 
 /* USER CODE BEGIN includes */
+ extern UART_HandleTypeDef huart2;
+
+ #define BYTES_IN_FLOATS 28*28*4
+
+ #define TIMEOUT 1000
+
+ #define SYNCHRONISATION 0xAB
+
+ #define ACKNOWLEDGE 0xCD
+
+ #define CLASS_NUMBER 10
+
+  void synchronize_UART(void);
 /* USER CODE END includes */
 
 /* IO buffers ----------------------------------------------------------------*/
@@ -169,28 +182,200 @@ static int ai_run(void)
 }
 
 /* USER CODE BEGIN 2 */
-int acquire_and_process_data(ai_i8* data[])
-{
-  /* fill the inputs of the c-model
-  for (int idx=0; idx < AI_MNIST_IN_NUM; idx++ )
-  {
-      data[idx] = ....
-  }
+void synchronize_UART(void)
 
-  */
-  return 0;
+{
+
+    bool is_synced = 0;
+
+    unsigned char rx[2] = {0};
+
+    unsigned char tx[2] = {ACKNOWLEDGE, 0};
+
+    while (!is_synced)
+
+    {
+
+      HAL_UART_Receive(&huart2, (uint8_t *)rx, sizeof(rx), TIMEOUT);
+
+      if (rx[0] == SYNCHRONISATION)
+
+      {
+
+        HAL_UART_Transmit(&huart2, (uint8_t *)tx, sizeof(tx), TIMEOUT);
+
+        is_synced = 1;
+
+      }
+
+    }
+
+    return;
+
 }
 
-int post_process(ai_i8* data[])
-{
-  /* process the predictions
-  for (int idx=0; idx < AI_MNIST_OUT_NUM; idx++ )
-  {
-      data[idx] = ....
-  }
+int acquire_and_process_data(ai_i8 *data[])
 
-  */
-  return 0;
+{
+
+    //
+
+    // 1. Variables for data acquisition
+
+    //
+
+    unsigned char tmp[BYTES_IN_FLOATS] = {0};
+
+    int num_elements = sizeof(tmp) / sizeof(tmp[0]);
+
+    int num_floats = num_elements / 4;
+
+    //
+
+    // 2. Receive data from UART
+
+    //
+
+    HAL_StatusTypeDef status = HAL_UART_Receive(&huart2, (uint8_t *)tmp, sizeof(tmp), TIMEOUT);
+
+    // Check the return status of HAL_UART_Receive
+
+    if (status != HAL_OK)
+
+    {
+
+      printf("Failed to receive data from UART. Error code: %d\n", status);
+
+      return (1);
+
+    }
+
+    //
+
+    // 3. Reconstruct floats from bytes
+
+    //
+
+    if (num_elements % 4 != 0)
+
+    {
+
+      printf("The array length is not a multiple of 4 bytes. Cannot reconstruct floats.\n");
+
+      return (1);
+
+    }
+
+    for (size_t i = 0; i < num_floats; i++)
+
+    {
+
+      unsigned char bytes[4] = {0};
+
+      // Reconstruction of the bytes
+
+      for (size_t j = 0; j < 4; j++)
+
+      {
+
+        bytes[j] = tmp[i * 4 + j];
+
+      }
+
+      // Store the bytes in 'data'
+
+      for (size_t k = 0; k < 4; k++)
+
+      {
+
+        ((uint8_t *)data)[(i * 4 + k)] = bytes[k];
+
+      }
+
+    }
+
+    return (0);
+
+}
+
+int post_process(ai_i8 *data[])
+
+{
+
+    //
+
+    // Get the output data
+
+    //
+
+    if (data == NULL)
+
+    {
+
+      printf("The output data is NULL.\n");
+
+      return (1);
+
+    }
+
+    uint8_t *output = data;
+
+    // An array to store the float outputs
+
+    float outs[CLASS_NUMBER] = {0.0};
+
+    uint8_t outs_uint8[CLASS_NUMBER] = {0};
+
+    /* Convert the probability to float */
+
+    for (size_t i = 0; i < CLASS_NUMBER; i++)
+
+    {
+
+      uint8_t temp[4] = {0};
+
+      // Extract 4 bytes to reconstruct a float
+
+      for (size_t j = 0; j < 4; j++)
+
+      {
+
+        temp[j] = output[i * 4 + j];
+
+      }
+
+      // Reconstruct the float from the bytes
+
+      outs[i] = *(float *)&temp;
+
+      // Convert the float to uint8_t for UART transmission
+
+      outs_uint8[i] = (char)(outs[i] * 255);
+
+    }
+
+    //
+
+// Transmit the output data
+
+//
+
+HAL_StatusTypeDef status = HAL_UART_Transmit(&huart2, (uint8_t *)outs_uint8, sizeof(outs_uint8), TIMEOUT);
+
+// Check the return status of HAL_UART_Transmit
+
+if (status != HAL_OK)
+
+{
+
+printf("Failed to transmit data to UART. Error code: %d\n", status);
+
+return (1);
+
+}
+
+return 0;
+
 }
 /* USER CODE END 2 */
 
@@ -206,31 +391,53 @@ void MX_X_CUBE_AI_Init(void)
 }
 
 void MX_X_CUBE_AI_Process(void)
+
 {
+
     /* USER CODE BEGIN 6 */
+
   int res = -1;
 
-  printf("TEMPLATE - run - main loop\r\n");
+  uint8_t *in_data = ai_input[0].data;
+
+  uint8_t *out_data = ai_output[0].data;
+
+  synchronize_UART();
 
   if (mnist) {
 
     do {
+
       /* 1 - acquire and pre-process input data */
-      res = acquire_and_process_data(data_ins);
+
+      res = acquire_and_process_data(in_data);
+
       /* 2 - process the data - call inference engine */
+
       if (res == 0)
+
         res = ai_run();
+
       /* 3- post-process the predictions */
+
       if (res == 0)
-        res = post_process(data_outs);
+
+        res = post_process(out_data);
+
     } while (res==0);
+
   }
 
   if (res) {
+
     ai_error err = {AI_ERROR_INVALID_STATE, AI_ERROR_CODE_NETWORK};
+
     ai_log_err(err, "Process has FAILED");
+
   }
+
     /* USER CODE END 6 */
+
 }
 #ifdef __cplusplus
 }
