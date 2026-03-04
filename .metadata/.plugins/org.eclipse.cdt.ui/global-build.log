@@ -76,10 +76,3 @@ Finished building: default.size.stdout
  
 Finished building: Embedded_AI.list
  
-09:32:06 **** Incremental Build of configuration Debug for project Embedded_AI ****
-make -j16 all 
-arm-none-eabi-size  Embedded_AI.elf 
-   text	   data	    bss	    dec	    hex	filename
-  47060	   2092	  12812	  61964	   f20c	Embedded_AI.elf
-Finished building: default.size.stdout
- 

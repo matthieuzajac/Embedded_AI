@@ -29,39 +29,3 @@ COM5
 
 !ENTRY org.eclipse.cdt.core 1 0 2026-02-25 09:09:41.537
 !MESSAGE Indexed 'Embedded_AI' (43 sources, 207 headers) in 8,36 sec: 22 334 declarations; 110 703 references; 3 unresolved inclusions; 46 syntax errors; 179 unresolved names (0,13 %)
-
-!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-02-25 09:30:17.678
-!MESSAGE Executed PowerShell command powershell.exe -Command "Get-CimInstance -ClassName Win32_SerialPort | Select-Object -ExpandProperty DeviceID":
-COM4
-COM6
-COM5
-COM10
-
-
-!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-02-25 09:30:17.679
-!MESSAGE port: COM4
-
-!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-02-25 09:30:17.680
-!MESSAGE port: COM6
-
-!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-02-25 09:30:17.682
-!MESSAGE port: COM5
-
-!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-02-25 09:30:17.683
-!MESSAGE port: COM10
-
-!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-02-25 09:40:32.552
-!MESSAGE Executed PowerShell command powershell.exe -Command "Get-CimInstance -ClassName Win32_SerialPort | Select-Object -ExpandProperty DeviceID":
-COM4
-COM6
-COM5
-
-
-!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-02-25 09:40:32.554
-!MESSAGE port: COM4
-
-!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-02-25 09:40:32.555
-!MESSAGE port: COM6
-
-!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-02-25 09:40:32.556
-!MESSAGE port: COM5
