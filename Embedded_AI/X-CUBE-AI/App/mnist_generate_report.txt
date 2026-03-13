@@ -1,30 +1,30 @@
 ST Edge AI Core v2.2.0-20266 2adc00962
-Created date          : 2026-02-12 05:29:32
-Parameters            : generate --target stm32l4 --name mnist -m C:/CNN/MNIST_NN.h5 --compression high --verbosity 1 --workspace C:/Users/heris/AppData/Local/Temp/mxAI_workspace60814449067009876272257238871170 --output C:/Users/heris/.stm32cubemx/mnist_output
+Created date          : 2026-03-13 10:39:00
+Parameters            : generate --target stm32l4 --name mnist -m C:/CNN/MNIST_NN.h5 --compression high --verbosity 1 --workspace C:/Users/heris/AppData/Local/Temp/mxAI_workspace745875262480010321890814601862021 --output C:/Users/heris/.stm32cubemx/mnist_output
 
 Exec/report summary (generate)
-----------------------------------------------------------------------------------------------------------
-model file         :   C:\CNN\MNIST_NN.h5                                                                 
-type               :   keras                                                                              
-c_name             :   mnist                                                                              
-compression        :   high                                                                               
-options            :   allocate-inputs, allocate-outputs                                                  
-optimization       :   balanced                                                                           
-target/series      :   stm32l4                                                                            
-workspace dir      :   C:\Users\heris\AppData\Local\Temp\mxAI_workspace60814449067009876272257238871170   
-output dir         :   C:\Users\heris\.stm32cubemx\mnist_output                                           
-model_fmt          :   float                                                                              
-model_name         :   MNIST_NN                                                                           
-model_hash         :   0x328e604322122e471ab7a6766b10d5e5                                                 
-params #           :   6,478 items (25.30 KiB)                                                            
-----------------------------------------------------------------------------------------------------------
-input 1/1          :   'input_0', f32(1x28x28x1), 3.06 KBytes, activations                                
-output 1/1         :   'dense_1', f32(1x10), 40 Bytes, activations                                        
-macc               :   23,874                                                                             
-weights (ro)       :   3,528 B (3.45 KiB) (1 segment) / -22,384(-86.4%) vs float model                    
-activations (rw)   :   3,868 B (3.78 KiB) (1 segment) *                                                   
-ram (total)        :   3,868 B (3.78 KiB) = 3,868 + 0 + 0                                                 
-----------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------
+model file         :   C:\CNN\MNIST_NN.h5                                                                  
+type               :   keras                                                                               
+c_name             :   mnist                                                                               
+compression        :   high                                                                                
+options            :   allocate-inputs, allocate-outputs                                                   
+optimization       :   balanced                                                                            
+target/series      :   stm32l4                                                                             
+workspace dir      :   C:\Users\heris\AppData\Local\Temp\mxAI_workspace745875262480010321890814601862021   
+output dir         :   C:\Users\heris\.stm32cubemx\mnist_output                                            
+model_fmt          :   float                                                                               
+model_name         :   MNIST_NN                                                                            
+model_hash         :   0x328e604322122e471ab7a6766b10d5e5                                                  
+params #           :   6,478 items (25.30 KiB)                                                             
+-----------------------------------------------------------------------------------------------------------
+input 1/1          :   'input_0', f32(1x28x28x1), 3.06 KBytes, activations                                 
+output 1/1         :   'dense_1', f32(1x10), 40 Bytes, activations                                         
+macc               :   23,874                                                                              
+weights (ro)       :   3,528 B (3.45 KiB) (1 segment) / -22,384(-86.4%) vs float model                     
+activations (rw)   :   3,868 B (3.78 KiB) (1 segment) *                                                    
+ram (total)        :   3,868 B (3.78 KiB) = 3,868 + 0 + 0                                                  
+-----------------------------------------------------------------------------------------------------------
 (*) 'input'/'output' buffers are allocated in the activations buffer
 
 Model name - MNIST_NN
