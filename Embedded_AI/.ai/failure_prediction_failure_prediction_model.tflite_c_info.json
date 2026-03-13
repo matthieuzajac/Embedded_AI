@@ -469,45 +469,46 @@
     }
   ],
   "environment": {
+    "device": "AMD64, AMD64 Family 25 Model 80 Stepping 0, AuthenticAMD, Windows",
     "generated_model": {
-      "generated_time": "2026-03-13T11:08:28+0100",
+      "generated_time": "2026-03-13T11:38:04+0100",
       "model_files": [
         {
           "name": "failure_prediction_data_params.h",
-          "signature": "0xf971ce5ff7407d29182447b852d58e9a"
+          "signature": "0xc3f42403b3fbc8c341daf176e02e4092"
         },
         {
           "name": "failure_prediction_data_params.c",
-          "signature": "0x80f223fb10f90b0cd423b3c0c532ff58"
+          "signature": "0x37bb30a5a276d08605417bf28f5fb405"
         },
         {
           "name": "failure_prediction_data.h",
-          "signature": "0x907627a8c630066970d2cb255a7fe99a"
+          "signature": "0xc5cad9075e14e15cf848105d4dc78fc1"
         },
         {
           "name": "failure_prediction_data.c",
-          "signature": "0xead3d66762042a78ec65c3e4db70388a"
+          "signature": "0xc1642d856f51afb0a6905526edd153ca"
         },
         {
           "name": "failure_prediction_config.h",
-          "signature": "0xd35581efb20c2801c6669491b5fb22ea"
+          "signature": "0x124ea8557ada6e7aa6fd90941396260e"
         },
         {
           "name": "failure_prediction.h",
-          "signature": "0x206b785d6d1b2092d2a594af0abe4571"
+          "signature": "0x2a2dd39dd4fb15308d97a3958db502d6"
         },
         {
           "name": "failure_prediction.c",
-          "signature": "0x52cf9094d6c624f9ead535fb1b81746b"
+          "signature": "0x697d6c9daef371762cb756d46abf447c"
         }
       ],
       "name": "failure_prediction"
     },
-    "network_signature": "0xd23fe552c430c07a",
+    "network_signature": "0xbb2e432752c963eb",
     "test_name": "",
     "tools": [
       {
-        "arguments": "generate --target stm32l4 --name failure_prediction -m C:/Users/heris/Documents/STM32/IA_embarquee/model/failure_prediction_model.tflite --compression medium --verbosity 1 --workspace C:/Users/heris/AppData/Local/Temp/mxAI_workspace126895410540010146586405841965197 --output C:/Users/heris/.stm32cubemx/failure_prediction_output",
+        "arguments": "validate --target stm32l4 --name failure_prediction -m C:/Users/heris/Documents/STM32/IA_embarquee/model/failure_prediction_model.tflite --compression medium --verbosity 1 --workspace C:/Users/heris/AppData/Local/Temp/mxAI_workspace303639254110015573452282886918907 --output C:/Users/heris/.stm32cubemx/failure_prediction_output --valoutput C:/Users/heris/Documents/STM32/IA_embarquee/model/y_test.npy --valinput C:/Users/heris/Documents/STM32/IA_embarquee/model/X_test.npy",
         "environment": [
           "STATS_TYPE=X-CUBE-AI"
         ],
@@ -630,6 +631,13 @@
           }
         }
       ],
+      "exec_time": {
+        "counters": null,
+        "cycles": 0,
+        "cycles_by_macc": 0.0,
+        "duration_ms": 0.0669212281253358,
+        "percentage": 100.0
+      },
       "id": 0,
       "inputs": [
         109
@@ -643,6 +651,13 @@
             "use_bias": "True"
           },
           "description": "Dense",
+          "exec_time": {
+            "counters": [],
+            "cycles": 0,
+            "cycles_by_macc": 0.0,
+            "duration_ms": 0.0006628199001494749,
+            "percentage": 0.9904479022830978
+          },
           "id": 9,
           "inputs": [
             109,
@@ -669,6 +684,7 @@
             "nonlinearity": "relu"
           },
           "description": "Nonlinearity",
+          "exec_time": {},
           "id": 10,
           "inputs": [
             111
@@ -695,6 +711,13 @@
             "use_bias": "True"
           },
           "description": "Dense",
+          "exec_time": {
+            "counters": [],
+            "cycles": 0,
+            "cycles_by_macc": 0.0,
+            "duration_ms": 0.0005067737320483823,
+            "percentage": 0.7572690254566954
+          },
           "id": 11,
           "inputs": [
             113,
@@ -721,6 +744,7 @@
             "nonlinearity": "relu"
           },
           "description": "Nonlinearity",
+          "exec_time": {},
           "id": 12,
           "inputs": [
             115
@@ -747,6 +771,13 @@
             "use_bias": "True"
           },
           "description": "Dense",
+          "exec_time": {
+            "counters": [],
+            "cycles": 0,
+            "cycles_by_macc": 0.0,
+            "duration_ms": 0.00043602611226339514,
+            "percentage": 0.6515512707668308
+          },
           "id": 13,
           "inputs": [
             117,
@@ -773,6 +804,7 @@
             "nonlinearity": "relu"
           },
           "description": "Nonlinearity",
+          "exec_time": {},
           "id": 14,
           "inputs": [
             119
@@ -798,6 +830,13 @@
             "use_bias": "True"
           },
           "description": "Dense",
+          "exec_time": {
+            "counters": [],
+            "cycles": 0,
+            "cycles_by_macc": 0.0,
+            "duration_ms": 0.0010095334139162357,
+            "percentage": 1.5085398791927358
+          },
           "id": 15,
           "inputs": [
             121,
@@ -826,6 +865,13 @@
             "orig_axis": "-1"
           },
           "description": "Nonlinearity",
+          "exec_time": {
+            "counters": [],
+            "cycles": 0,
+            "cycles_by_macc": 0.0,
+            "duration_ms": 0.0011886603659700193,
+            "percentage": 1.7762082365610423
+          },
           "id": 16,
           "inputs": [
             123
@@ -900,12 +946,12 @@
       0,
       0
     ],
-    "kernel_flash": 10646,
-    "kernel_ram": 2484,
-    "series": "stm32l4",
-    "toolchain": "arm-none-eabi-gcc (GNU Tools for STM32 13.3.rel1.20250523-0900) 13.3.1 20240614",
-    "toolchain_flash": 638,
-    "toolchain_ram": 0,
+    "kernel_flash": null,
+    "kernel_ram": null,
+    "series": "generic",
+    "toolchain": null,
+    "toolchain_flash": null,
+    "toolchain_ram": null,
     "weights": 24532
   },
   "memory_pools": [
@@ -940,7 +986,7 @@
       "virtual": false
     },
     {
-      "address": "s_failure_prediction_weights_array_u64",
+      "address": "NULL",
       "alignment": 0,
       "attributes": {
         "latency": "UNDEF",
@@ -968,5 +1014,44 @@
       "user_allocated": false,
       "virtual": false
     }
-  ]
+  ],
+  "validation": {
+    "val_error": 0.055189039558172226,
+    "val_error_desc": "x-cross (l2r) #1",
+    "val_metrics": [
+      {
+        "acc": "84.56%",
+        "cos": 0.8748798370361328,
+        "desc": "HOST c-model #1",
+        "l2r": 0.521737813949585,
+        "mae": 0.07259067893028259,
+        "mean": -3.5628339167814715e-10,
+        "nse": 0.7021921598620797,
+        "rmse": 0.21829812228679657,
+        "std": 0.21830905973911285
+      },
+      {
+        "acc": "83.81%",
+        "cos": 0.8673768639564514,
+        "desc": "original model #1",
+        "l2r": 0.5364622473716736,
+        "mae": 0.07505209743976593,
+        "mean": 3.5105491430487135e-11,
+        "nse": 0.6844730938858914,
+        "rmse": 0.2246984839439392,
+        "std": 0.22470974922180176
+      },
+      {
+        "acc": "98.85%",
+        "cos": 0.9984791874885559,
+        "desc": "X-cross #1",
+        "l2r": 0.055189039558172226,
+        "mae": 0.0066528841853141785,
+        "mean": -3.8261252499616205e-10,
+        "nse": 0.9960634236251322,
+        "rmse": 0.023091411218047142,
+        "std": 0.023092569783329964
+      }
+    ]
+  }
 }

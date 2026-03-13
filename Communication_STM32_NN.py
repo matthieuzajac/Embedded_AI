@@ -100,5 +100,5 @@ if __name__ == '__main__':
         print("Synchronised")
 
         print("Evaluating model on STM32...")
-        iterations = min(100, len(X_test))
+        iterations = len(X_test)
         error = evaluate_model_on_STM32(iterations, ser, output_size)
