@@ -2,7 +2,7 @@
   ******************************************************************************
   * @file    failure_prediction.c
   * @author  AST Embedded Analytics Research Platform
-  * @date    2026-03-13T10:39:15+0100
+  * @date    2026-03-13T11:08:28+0100
   * @brief   AI Tool Automatic Code Generator for Embedded NN computing
   ******************************************************************************
   * @attention
@@ -42,7 +42,7 @@
 #endif
 
 #undef AI_TOOLS_DATE_TIME
-#define AI_TOOLS_DATE_TIME   "2026-03-13T10:39:15+0100"
+#define AI_TOOLS_DATE_TIME   "2026-03-13T11:08:28+0100"
 
 #undef AI_TOOLS_COMPILE_TIME
 #define AI_TOOLS_COMPILE_TIME    __DATE__ " " __TIME__
@@ -412,7 +412,7 @@ AI_NETWORK_OBJ_DECLARE(
     1536, NULL, NULL),
   AI_TENSOR_LIST_IO_OBJ_INIT(AI_FLAG_NONE, AI_FAILURE_PREDICTION_IN_NUM, &serving_default_input_layer_150_output),
   AI_TENSOR_LIST_IO_OBJ_INIT(AI_FLAG_NONE, AI_FAILURE_PREDICTION_OUT_NUM, &nl_4_output),
-  &gemm_0_layer, 0xbe0e1076, NULL)
+  &gemm_0_layer, 0xd23fe552, NULL)
 
 #else
 
@@ -432,7 +432,7 @@ AI_NETWORK_OBJ_DECLARE(
   ),
   AI_TENSOR_LIST_IO_OBJ_INIT(AI_FLAG_NONE, AI_FAILURE_PREDICTION_IN_NUM, &serving_default_input_layer_150_output),
   AI_TENSOR_LIST_IO_OBJ_INIT(AI_FLAG_NONE, AI_FAILURE_PREDICTION_OUT_NUM, &nl_4_output),
-  &gemm_0_layer, 0xbe0e1076, NULL)
+  &gemm_0_layer, 0xd23fe552, NULL)
 
 #endif	/*(AI_TOOLS_API_VERSION < AI_TOOLS_API_VERSION_1_5)*/
 
@@ -555,7 +555,7 @@ ai_bool ai_failure_prediction_get_info(
       .params            = AI_STRUCT_INIT,
       .activations       = AI_STRUCT_INIT,
       .n_nodes           = 0,
-      .signature         = 0xbe0e1076,
+      .signature         = 0xd23fe552,
     };
 
     if (!ai_platform_api_get_network_report(network, &r)) return false;
@@ -603,7 +603,7 @@ ai_bool ai_failure_prediction_get_report(
       .map_weights       = AI_STRUCT_INIT,
       .map_activations   = AI_STRUCT_INIT,
       .n_nodes           = 0,
-      .signature         = 0xbe0e1076,
+      .signature         = 0xd23fe552,
     };
 
     if (!ai_platform_api_get_network_report(network, &r)) return false;

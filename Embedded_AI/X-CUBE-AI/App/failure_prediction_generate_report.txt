@@ -1,30 +1,30 @@
 ST Edge AI Core v2.2.0-20266 2adc00962
-Created date          : 2026-03-13 10:39:17
-Parameters            : generate --target stm32l4 --name failure_prediction -m C:/Users/heris/Documents/STM32/IA_embarquee/failure_prediction_model.tflite --compression medium --verbosity 1 --workspace C:/Users/heris/AppData/Local/Temp/mxAI_workspace74793268575008561471928848017459 --output C:/Users/heris/Documents/STM32/IA_embarquee
+Created date          : 2026-03-13 11:08:31
+Parameters            : generate --target stm32l4 --name failure_prediction -m C:/Users/heris/Documents/STM32/IA_embarquee/model/failure_prediction_model.tflite --compression medium --verbosity 1 --workspace C:/Users/heris/AppData/Local/Temp/mxAI_workspace126895410540010146586405841965197 --output C:/Users/heris/.stm32cubemx/failure_prediction_output
 
 Exec/report summary (generate)
-----------------------------------------------------------------------------------------------------------
-model file         :   C:\Users\heris\Documents\STM32\IA_embarquee\failure_prediction_model.tflite        
-type               :   tflite                                                                             
-c_name             :   failure_prediction                                                                 
-compression        :   medium                                                                             
-options            :   allocate-inputs, allocate-outputs                                                  
-optimization       :   balanced                                                                           
-target/series      :   stm32l4                                                                            
-workspace dir      :   C:\Users\heris\AppData\Local\Temp\mxAI_workspace74793268575008561471928848017459   
-output dir         :   C:\Users\heris\Documents\STM32\IA_embarquee                                        
-model_fmt          :   float                                                                              
-model_name         :   failure_prediction_model                                                           
-model_hash         :   0x33fb0c887ee418c381a3d59c6a584926                                                 
-params #           :   43,013 items (44.27 KiB)                                                           
-----------------------------------------------------------------------------------------------------------
-input 1/1          :   'serving_default_in.._layer_150', f32(1x5), 20 Bytes, activations                  
-output 1/1         :   'nl_4', f32(1x5), 20 Bytes, activations                                            
-macc               :   43,536                                                                             
-weights (ro)       :   24,532 B (23.96 KiB) (1 segment) / -147,520(-85.7%) vs float model                 
-activations (rw)   :   1,536 B (1.50 KiB) (1 segment) *                                                   
-ram (total)        :   1,536 B (1.50 KiB) = 1,536 + 0 + 0                                                 
-----------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------
+model file         :   C:\Users\heris\Documents\STM32\IA_embarquee\model\failure_prediction_model.tflite   
+type               :   tflite                                                                              
+c_name             :   failure_prediction                                                                  
+compression        :   medium                                                                              
+options            :   allocate-inputs, allocate-outputs                                                   
+optimization       :   balanced                                                                            
+target/series      :   stm32l4                                                                             
+workspace dir      :   C:\Users\heris\AppData\Local\Temp\mxAI_workspace126895410540010146586405841965197   
+output dir         :   C:\Users\heris\.stm32cubemx\failure_prediction_output                               
+model_fmt          :   float                                                                               
+model_name         :   failure_prediction_model                                                            
+model_hash         :   0x33fb0c887ee418c381a3d59c6a584926                                                  
+params #           :   43,013 items (44.27 KiB)                                                            
+-----------------------------------------------------------------------------------------------------------
+input 1/1          :   'serving_default_in.._layer_150', f32(1x5), 20 Bytes, activations                   
+output 1/1         :   'nl_4', f32(1x5), 20 Bytes, activations                                             
+macc               :   43,536                                                                              
+weights (ro)       :   24,532 B (23.96 KiB) (1 segment) / -147,520(-85.7%) vs float model                  
+activations (rw)   :   1,536 B (1.50 KiB) (1 segment) *                                                    
+ram (total)        :   1,536 B (1.50 KiB) = 1,536 + 0 + 0                                                  
+-----------------------------------------------------------------------------------------------------------
 (*) 'input'/'output' buffers are allocated in the activations buffer
 
 Model name - failure_prediction_model
@@ -206,11 +206,11 @@ macc=43,536 weights=24,532 act=1,536 ram_io=0
 
 
 Generated files (7)
------------------------------------------------------------------------------- 
-C:\Users\heris\Documents\STM32\IA_embarquee\failure_prediction_data_params.h   
-C:\Users\heris\Documents\STM32\IA_embarquee\failure_prediction_data_params.c   
-C:\Users\heris\Documents\STM32\IA_embarquee\failure_prediction_data.h          
-C:\Users\heris\Documents\STM32\IA_embarquee\failure_prediction_data.c          
-C:\Users\heris\Documents\STM32\IA_embarquee\failure_prediction_config.h        
-C:\Users\heris\Documents\STM32\IA_embarquee\failure_prediction.h               
-C:\Users\heris\Documents\STM32\IA_embarquee\failure_prediction.c               
+---------------------------------------------------------------------------------------- 
+C:\Users\heris\.stm32cubemx\failure_prediction_output\failure_prediction_data_params.h   
+C:\Users\heris\.stm32cubemx\failure_prediction_output\failure_prediction_data_params.c   
+C:\Users\heris\.stm32cubemx\failure_prediction_output\failure_prediction_data.h          
+C:\Users\heris\.stm32cubemx\failure_prediction_output\failure_prediction_data.c          
+C:\Users\heris\.stm32cubemx\failure_prediction_output\failure_prediction_config.h        
+C:\Users\heris\.stm32cubemx\failure_prediction_output\failure_prediction.h               
+C:\Users\heris\.stm32cubemx\failure_prediction_output\failure_prediction.c               

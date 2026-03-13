@@ -1,0 +1,13 @@
+../X-CUBE-AI/App/failure_prediction.c:443:9:failure_prediction_configure_activations	16	static
+../X-CUBE-AI/App/failure_prediction.c:480:9:failure_prediction_configure_weights	16	static
+../X-CUBE-AI/App/failure_prediction.c:525:9:ai_failure_prediction_get_info	160	static
+../X-CUBE-AI/App/failure_prediction.c:572:9:ai_failure_prediction_get_report	160	static
+../X-CUBE-AI/App/failure_prediction.c:619:10:ai_failure_prediction_get_error	16	static
+../X-CUBE-AI/App/failure_prediction.c:626:10:ai_failure_prediction_create	24	static
+../X-CUBE-AI/App/failure_prediction.c:637:10:ai_failure_prediction_create_and_init	88	static
+../X-CUBE-AI/App/failure_prediction.c:672:12:ai_failure_prediction_inputs_get	16	static
+../X-CUBE-AI/App/failure_prediction.c:683:12:ai_failure_prediction_outputs_get	16	static
+../X-CUBE-AI/App/failure_prediction.c:694:11:ai_failure_prediction_destroy	16	static
+../X-CUBE-AI/App/failure_prediction.c:701:9:ai_failure_prediction_init	24	static
+../X-CUBE-AI/App/failure_prediction.c:718:8:ai_failure_prediction_run	24	static
+../X-CUBE-AI/App/failure_prediction.c:726:8:ai_failure_prediction_forward	16	static

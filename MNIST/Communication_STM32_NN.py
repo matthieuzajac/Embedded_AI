@@ -1,11 +1,7 @@
 import serial
 import numpy as np
 
-<<<<<<< HEAD
-PORT = "COM3"
-=======
 PORT = "COM10"
->>>>>>> f234f8f18b836c294de778322e3f4bcabeaaeb26
 
 
 def synchronise_UART(serial_port):

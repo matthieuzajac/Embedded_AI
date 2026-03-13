@@ -54,15 +54,14 @@
 #include "app_x-cube-ai.h"
 #include "main.h"
 #include "ai_datatypes_defines.h"
-#include "mnist.h"
-#include "mnist_data.h"
 #include "failure_prediction.h"
 #include "failure_prediction_data.h"
 
 /* USER CODE BEGIN includes */
  extern UART_HandleTypeDef huart2;
 
- #define BYTES_IN_FLOATS 28*28*4
+ #define INPUT_SIZE_BYTES AI_FAILURE_PREDICTION_IN_1_SIZE_BYTES
+ #define OUTPUT_SIZE AI_FAILURE_PREDICTION_OUT_1_SIZE
 
  #define TIMEOUT 1000
 
@@ -70,31 +69,29 @@
 
  #define ACKNOWLEDGE 0xCD
 
- #define CLASS_NUMBER 10
-
   void synchronize_UART(void);
 /* USER CODE END includes */
 
 /* IO buffers ----------------------------------------------------------------*/
 
-#if !defined(AI_MNIST_INPUTS_IN_ACTIVATIONS)
-AI_ALIGNED(4) ai_i8 data_in_1[AI_MNIST_IN_1_SIZE_BYTES];
-ai_i8* data_ins[AI_MNIST_IN_NUM] = {
+#if !defined(AI_FAILURE_PREDICTION_INPUTS_IN_ACTIVATIONS)
+AI_ALIGNED(4) ai_i8 data_in_1[AI_FAILURE_PREDICTION_IN_1_SIZE_BYTES];
+ai_i8* data_ins[AI_FAILURE_PREDICTION_IN_NUM] = {
 data_in_1
 };
 #else
-ai_i8* data_ins[AI_MNIST_IN_NUM] = {
+ai_i8* data_ins[AI_FAILURE_PREDICTION_IN_NUM] = {
 NULL
 };
 #endif
 
-#if !defined(AI_MNIST_OUTPUTS_IN_ACTIVATIONS)
-AI_ALIGNED(4) ai_i8 data_out_1[AI_MNIST_OUT_1_SIZE_BYTES];
-ai_i8* data_outs[AI_MNIST_OUT_NUM] = {
+#if !defined(AI_FAILURE_PREDICTION_OUTPUTS_IN_ACTIVATIONS)
+AI_ALIGNED(4) ai_i8 data_out_1[AI_FAILURE_PREDICTION_OUT_1_SIZE_BYTES];
+ai_i8* data_outs[AI_FAILURE_PREDICTION_OUT_NUM] = {
 data_out_1
 };
 #else
-ai_i8* data_outs[AI_MNIST_OUT_NUM] = {
+ai_i8* data_outs[AI_FAILURE_PREDICTION_OUT_NUM] = {
 NULL
 };
 #endif
@@ -102,14 +99,13 @@ NULL
 /* Activations buffers -------------------------------------------------------*/
 
 AI_ALIGNED(32)
-static uint8_t pool0[AI_MNIST_DATA_ACTIVATION_1_SIZE];
+static uint8_t pool0[AI_FAILURE_PREDICTION_DATA_ACTIVATION_1_SIZE];
 
 ai_handle data_activations0[] = {pool0};
-ai_handle data_activations1[] = {pool0};
 
 /* AI objects ----------------------------------------------------------------*/
 
-static ai_handle mnist = AI_HANDLE_NULL;
+static ai_handle failure_prediction = AI_HANDLE_NULL;
 
 static ai_buffer* ai_input;
 static ai_buffer* ai_output;
@@ -132,37 +128,37 @@ static int ai_boostrap(ai_handle *act_addr)
   ai_error err;
 
   /* Create and initialize an instance of the model */
-  err = ai_mnist_create_and_init(&mnist, act_addr, NULL);
+  err = ai_failure_prediction_create_and_init(&failure_prediction, act_addr, NULL);
   if (err.type != AI_ERROR_NONE) {
-    ai_log_err(err, "ai_mnist_create_and_init");
+    ai_log_err(err, "ai_failure_prediction_create_and_init");
     return -1;
   }
 
-  ai_input = ai_mnist_inputs_get(mnist, NULL);
-  ai_output = ai_mnist_outputs_get(mnist, NULL);
+  ai_input = ai_failure_prediction_inputs_get(failure_prediction, NULL);
+  ai_output = ai_failure_prediction_outputs_get(failure_prediction, NULL);
 
-#if defined(AI_MNIST_INPUTS_IN_ACTIVATIONS)
+#if defined(AI_FAILURE_PREDICTION_INPUTS_IN_ACTIVATIONS)
   /*  In the case where "--allocate-inputs" option is used, memory buffer can be
    *  used from the activations buffer. This is not mandatory.
    */
-  for (int idx=0; idx < AI_MNIST_IN_NUM; idx++) {
+  for (int idx=0; idx < AI_FAILURE_PREDICTION_IN_NUM; idx++) {
 	data_ins[idx] = ai_input[idx].data;
   }
 #else
-  for (int idx=0; idx < AI_MNIST_IN_NUM; idx++) {
+  for (int idx=0; idx < AI_FAILURE_PREDICTION_IN_NUM; idx++) {
 	  ai_input[idx].data = data_ins[idx];
   }
 #endif
 
-#if defined(AI_MNIST_OUTPUTS_IN_ACTIVATIONS)
+#if defined(AI_FAILURE_PREDICTION_OUTPUTS_IN_ACTIVATIONS)
   /*  In the case where "--allocate-outputs" option is used, memory buffer can be
    *  used from the activations buffer. This is no mandatory.
    */
-  for (int idx=0; idx < AI_MNIST_OUT_NUM; idx++) {
+  for (int idx=0; idx < AI_FAILURE_PREDICTION_OUT_NUM; idx++) {
 	data_outs[idx] = ai_output[idx].data;
   }
 #else
-  for (int idx=0; idx < AI_MNIST_OUT_NUM; idx++) {
+  for (int idx=0; idx < AI_FAILURE_PREDICTION_OUT_NUM; idx++) {
 	ai_output[idx].data = data_outs[idx];
   }
 #endif
@@ -174,10 +170,10 @@ static int ai_run(void)
 {
   ai_i32 batch;
 
-  batch = ai_mnist_run(mnist, ai_input, ai_output);
+  batch = ai_failure_prediction_run(failure_prediction, ai_input, ai_output);
   if (batch != 1) {
-    ai_log_err(ai_mnist_get_error(mnist),
-        "ai_mnist_run");
+    ai_log_err(ai_failure_prediction_get_error(failure_prediction),
+        "ai_failure_prediction_run");
     return -1;
   }
 
@@ -217,7 +213,7 @@ void synchronize_UART(void)
 
 }
 
-int acquire_and_process_data(ai_i8 *data[])
+int acquire_and_process_data(uint8_t *data)
 
 {
 
@@ -227,11 +223,7 @@ int acquire_and_process_data(ai_i8 *data[])
 
     //
 
-    unsigned char tmp[BYTES_IN_FLOATS] = {0};
-
-    int num_elements = sizeof(tmp) / sizeof(tmp[0]);
-
-    int num_floats = num_elements / 4;
+    unsigned char tmp[INPUT_SIZE_BYTES] = {0};
 
     //
 
@@ -259,49 +251,13 @@ int acquire_and_process_data(ai_i8 *data[])
 
     //
 
-    if (num_elements % 4 != 0)
-
-    {
-
-      printf("The array length is not a multiple of 4 bytes. Cannot reconstruct floats.\n");
-
-      return (1);
-
-    }
-
-    for (size_t i = 0; i < num_floats; i++)
-
-    {
-
-      unsigned char bytes[4] = {0};
-
-      // Reconstruction of the bytes
-
-      for (size_t j = 0; j < 4; j++)
-
-      {
-
-        bytes[j] = tmp[i * 4 + j];
-
-      }
-
-      // Store the bytes in 'data'
-
-      for (size_t k = 0; k < 4; k++)
-
-      {
-
-        ((uint8_t *)data)[(i * 4 + k)] = bytes[k];
-
-      }
-
-    }
+    memcpy(data, tmp, sizeof(tmp));
 
     return (0);
 
 }
 
-int post_process(ai_i8 *data[])
+int post_process(uint8_t *data)
 
 {
 
@@ -321,39 +277,29 @@ int post_process(ai_i8 *data[])
 
     }
 
-    uint8_t *output = data;
-
     // An array to store the float outputs
 
-    float outs[CLASS_NUMBER] = {0.0};
+    float outs[OUTPUT_SIZE] = {0.0f};
 
-    uint8_t outs_uint8[CLASS_NUMBER] = {0};
+    uint8_t outs_uint8[OUTPUT_SIZE] = {0};
 
     /* Convert the probability to float */
 
-    for (size_t i = 0; i < CLASS_NUMBER; i++)
+    for (size_t i = 0; i < OUTPUT_SIZE; i++)
 
     {
 
-      uint8_t temp[4] = {0};
-
-      // Extract 4 bytes to reconstruct a float
-
-      for (size_t j = 0; j < 4; j++)
-
-      {
-
-        temp[j] = output[i * 4 + j];
-
-      }
-
-      // Reconstruct the float from the bytes
-
-      outs[i] = *(float *)&temp;
+      memcpy(&outs[i], &data[i * sizeof(float)], sizeof(float));
 
       // Convert the float to uint8_t for UART transmission
 
-      outs_uint8[i] = (char)(outs[i] * 255);
+      float scaled = outs[i] * 255.0f;
+      if (scaled < 0.0f) {
+        scaled = 0.0f;
+      } else if (scaled > 255.0f) {
+        scaled = 255.0f;
+      }
+      outs_uint8[i] = (uint8_t)scaled;
 
     }
 
@@ -394,7 +340,9 @@ void MX_X_CUBE_AI_Init(void)
 }
 
 void MX_X_CUBE_AI_Process(void)
+
 {
+
     /* USER CODE BEGIN 6 */
 
   int res = -1;
@@ -405,7 +353,7 @@ void MX_X_CUBE_AI_Process(void)
 
   synchronize_UART();
 
-  if (mnist) {
+  if (failure_prediction) {
 
     do {
 
@@ -438,239 +386,8 @@ void MX_X_CUBE_AI_Process(void)
   }
 
     /* USER CODE END 6 */
+
 }
-/* Multiple network support --------------------------------------------------*/
-
-#include <string.h>
-#include "ai_datatypes_defines.h"
-
-static const ai_network_entry_t networks[AI_MNETWORK_NUMBER] = {
-    {
-        .name = (const char *)AI_MNIST_MODEL_NAME,
-        .config = AI_MNIST_DATA_CONFIG,
-        .ai_get_report = ai_mnist_get_report,
-        .ai_create = ai_mnist_create,
-        .ai_destroy = ai_mnist_destroy,
-        .ai_get_error = ai_mnist_get_error,
-        .ai_init = ai_mnist_init,
-        .ai_run = ai_mnist_run,
-        .ai_forward = ai_mnist_forward,
-        .ai_data_params_get = ai_mnist_data_params_get,
-        .activations = data_activations0
-    },
-    {
-        .name = (const char *)AI_FAILURE_PREDICTION_MODEL_NAME,
-        .config = AI_FAILURE_PREDICTION_DATA_CONFIG,
-        .ai_get_report = ai_failure_prediction_get_report,
-        .ai_create = ai_failure_prediction_create,
-        .ai_destroy = ai_failure_prediction_destroy,
-        .ai_get_error = ai_failure_prediction_get_error,
-        .ai_init = ai_failure_prediction_init,
-        .ai_run = ai_failure_prediction_run,
-        .ai_forward = ai_failure_prediction_forward,
-        .ai_data_params_get = ai_failure_prediction_data_params_get,
-        .activations = data_activations1
-    },
-};
-
-struct network_instance {
-     const ai_network_entry_t *entry;
-     ai_handle handle;
-     ai_network_params params;
-};
-
-/* Number of instance is aligned on the number of network */
-AI_STATIC struct network_instance gnetworks[AI_MNETWORK_NUMBER] = {0};
-
-AI_DECLARE_STATIC
-ai_bool ai_mnetwork_is_valid(const char* name,
-        const ai_network_entry_t *entry)
-{
-    if (name && (strlen(entry->name) == strlen(name)) &&
-            (strncmp(entry->name, name, strlen(entry->name)) == 0))
-        return true;
-    return false;
-}
-
-AI_DECLARE_STATIC
-struct network_instance *ai_mnetwork_handle(struct network_instance *inst)
-{
-    for (int i=0; i<AI_MNETWORK_NUMBER; i++) {
-        if ((inst) && (&gnetworks[i] == inst))
-            return inst;
-        else if ((!inst) && (gnetworks[i].entry == NULL))
-            return &gnetworks[i];
-    }
-    return NULL;
-}
-
-AI_DECLARE_STATIC
-void ai_mnetwork_release_handle(struct network_instance *inst)
-{
-    for (int i=0; i<AI_MNETWORK_NUMBER; i++) {
-        if ((inst) && (&gnetworks[i] == inst)) {
-            gnetworks[i].entry = NULL;
-            return;
-        }
-    }
-}
-
-AI_API_ENTRY
-const char* ai_mnetwork_find(const char *name, ai_int idx)
-{
-    const ai_network_entry_t *entry;
-
-    for (int i=0; i<AI_MNETWORK_NUMBER; i++) {
-        entry = &networks[i];
-        if (ai_mnetwork_is_valid(name, entry))
-            return entry->name;
-        else {
-            if (!idx--)
-                return entry->name;
-        }
-    }
-    return NULL;
-}
-
-AI_API_ENTRY
-ai_error ai_mnetwork_create(const char *name, ai_handle* network,
-        const ai_buffer* network_config)
-{
-    const ai_network_entry_t *entry;
-    const ai_network_entry_t *found = NULL;
-    ai_error err;
-    struct network_instance *inst = ai_mnetwork_handle(NULL);
-
-    if (!inst) {
-        err.type = AI_ERROR_ALLOCATION_FAILED;
-        err.code = AI_ERROR_CODE_NETWORK;
-        return err;
-    }
-
-    for (int i=0; i<AI_MNETWORK_NUMBER; i++) {
-        entry = &networks[i];
-        if (ai_mnetwork_is_valid(name, entry)) {
-            found = entry;
-            break;
-        }
-    }
-
-    if (!found) {
-        err.type = AI_ERROR_INVALID_PARAM;
-        err.code = AI_ERROR_CODE_NETWORK;
-        return err;
-    }
-
-    if (network_config == NULL)
-        err = found->ai_create(network, found->config);
-    else
-        err = found->ai_create(network, network_config);
-    if ((err.code == AI_ERROR_CODE_NONE) && (err.type == AI_ERROR_NONE)) {
-        inst->entry = found;
-        inst->handle = *network;
-        *network = (ai_handle*)inst;
-    }
-
-    return err;
-}
-
-AI_API_ENTRY
-ai_handle ai_mnetwork_destroy(ai_handle network)
-{
-    struct network_instance *inn;
-    inn =  ai_mnetwork_handle((struct network_instance *)network);
-    if (inn) {
-        ai_handle hdl = inn->entry->ai_destroy(inn->handle);
-        if (hdl != inn->handle) {
-            ai_mnetwork_release_handle(inn);
-            network = AI_HANDLE_NULL;
-        }
-    }
-    return network;
-}
-
-AI_API_ENTRY
-ai_bool ai_mnetwork_get_report(ai_handle network, ai_network_report* report)
-{
-    struct network_instance *inn;
-    inn =  ai_mnetwork_handle((struct network_instance *)network);
-    if (inn)
-        return inn->entry->ai_get_report(inn->handle, report);
-    else
-        return false;
-}
-
-AI_API_ENTRY
-ai_error ai_mnetwork_get_error(ai_handle network)
-{
-    struct network_instance *inn;
-    ai_error err;
-    err.type = AI_ERROR_INVALID_PARAM;
-    err.code = AI_ERROR_CODE_NETWORK;
-
-    inn =  ai_mnetwork_handle((struct network_instance *)network);
-    if (inn)
-        return inn->entry->ai_get_error(inn->handle);
-    else
-        return err;
-}
-
-AI_API_ENTRY
-ai_bool ai_mnetwork_init(ai_handle network)
-{
-    struct network_instance *inn;
-    ai_network_params par;
-
-    inn =  ai_mnetwork_handle((struct network_instance *)network);
-    if (inn) {
-        inn->entry->ai_data_params_get(&par);
-        for (int idx=0; idx < par.map_activations.size; idx++)
-          AI_BUFFER_ARRAY_ITEM_SET_ADDRESS(&par.map_activations, idx, inn->entry->activations[idx]);
-        return inn->entry->ai_init(inn->handle, &par);
-    }
-    else
-        return false;
-}
-
-AI_API_ENTRY
-ai_i32 ai_mnetwork_run(ai_handle network, const ai_buffer* input,
-        ai_buffer* output)
-{
-    struct network_instance* inn;
-    inn =  ai_mnetwork_handle((struct network_instance *)network);
-    if (inn)
-        return inn->entry->ai_run(inn->handle, input, output);
-    else
-        return 0;
-}
-
-AI_API_ENTRY
-ai_i32 ai_mnetwork_forward(ai_handle network, const ai_buffer* input)
-{
-    struct network_instance *inn;
-    inn =  ai_mnetwork_handle((struct network_instance *)network);
-    if (inn)
-        return inn->entry->ai_forward(inn->handle, input);
-    else
-        return 0;
-}
-
-AI_API_ENTRY
- int ai_mnetwork_get_private_handle(ai_handle network,
-         ai_handle *phandle,
-         ai_network_params *pparams)
- {
-     struct network_instance* inn;
-     inn =  ai_mnetwork_handle((struct network_instance *)network);
-     if (inn && phandle && pparams) {
-         *phandle = inn->handle;
-         *pparams = inn->params;
-         return 0;
-     }
-     else
-         return -1;
- }
-
 #ifdef __cplusplus
 }
 #endif

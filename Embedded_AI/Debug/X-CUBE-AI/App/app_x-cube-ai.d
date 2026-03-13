@@ -45,9 +45,11 @@ X-CUBE-AI/App/app_x-cube-ai.o: ../X-CUBE-AI/App/app_x-cube-ai.c \
  ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart_ex.h \
  ../Middlewares/ST/AI/Inc/ai_datatypes_defines.h \
  ../Middlewares/ST/AI/Inc/ai_platform.h \
- ../Middlewares/ST/AI/Inc/core_assert.h ../X-CUBE-AI/App/mnist.h \
- ../X-CUBE-AI/App/mnist_config.h ../X-CUBE-AI/App/mnist_data.h \
- ../X-CUBE-AI/App/mnist_data_params.h
+ ../Middlewares/ST/AI/Inc/core_assert.h \
+ ../X-CUBE-AI/App/failure_prediction.h \
+ ../X-CUBE-AI/App/failure_prediction_config.h \
+ ../X-CUBE-AI/App/failure_prediction_data.h \
+ ../X-CUBE-AI/App/failure_prediction_data_params.h
 ../X-CUBE-AI/App/app_x-cube-ai.h:
 ../Middlewares/ST/AI/Inc/ai_platform.h:
 ../Core/Inc/main.h:
@@ -97,7 +99,7 @@ X-CUBE-AI/App/app_x-cube-ai.o: ../X-CUBE-AI/App/app_x-cube-ai.c \
 ../Middlewares/ST/AI/Inc/ai_datatypes_defines.h:
 ../Middlewares/ST/AI/Inc/ai_platform.h:
 ../Middlewares/ST/AI/Inc/core_assert.h:
-../X-CUBE-AI/App/mnist.h:
-../X-CUBE-AI/App/mnist_config.h:
-../X-CUBE-AI/App/mnist_data.h:
-../X-CUBE-AI/App/mnist_data_params.h:
+../X-CUBE-AI/App/failure_prediction.h:
+../X-CUBE-AI/App/failure_prediction_config.h:
+../X-CUBE-AI/App/failure_prediction_data.h:
+../X-CUBE-AI/App/failure_prediction_data_params.h:

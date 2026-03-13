@@ -470,44 +470,44 @@
   ],
   "environment": {
     "generated_model": {
-      "generated_time": "2026-03-13T10:39:15+0100",
+      "generated_time": "2026-03-13T11:08:28+0100",
       "model_files": [
         {
           "name": "failure_prediction_data_params.h",
-          "signature": "0xb3dd6a7e597f6a2541fb568d255fa754"
+          "signature": "0xf971ce5ff7407d29182447b852d58e9a"
         },
         {
           "name": "failure_prediction_data_params.c",
-          "signature": "0x2f028f4756e0a6a06e9a70b31cb7e237"
+          "signature": "0x80f223fb10f90b0cd423b3c0c532ff58"
         },
         {
           "name": "failure_prediction_data.h",
-          "signature": "0x54b5624f2c90cd9414f39d14717d067a"
+          "signature": "0x907627a8c630066970d2cb255a7fe99a"
         },
         {
           "name": "failure_prediction_data.c",
-          "signature": "0x8803dc9a08481837c4f35419703a7d90"
+          "signature": "0xead3d66762042a78ec65c3e4db70388a"
         },
         {
           "name": "failure_prediction_config.h",
-          "signature": "0x7765f4ca2637a0ff8af5eff9ebfb66c1"
+          "signature": "0xd35581efb20c2801c6669491b5fb22ea"
         },
         {
           "name": "failure_prediction.h",
-          "signature": "0x876ad5871655c03d6ab9199eb1cd2e77"
+          "signature": "0x206b785d6d1b2092d2a594af0abe4571"
         },
         {
           "name": "failure_prediction.c",
-          "signature": "0xcf2cfb9a80d4b7a1dd9879bc9b82c082"
+          "signature": "0x52cf9094d6c624f9ead535fb1b81746b"
         }
       ],
       "name": "failure_prediction"
     },
-    "network_signature": "0xbe0e1076301211e3",
+    "network_signature": "0xd23fe552c430c07a",
     "test_name": "",
     "tools": [
       {
-        "arguments": "generate --target stm32l4 --name failure_prediction -m C:/Users/heris/Documents/STM32/IA_embarquee/failure_prediction_model.tflite --compression medium --verbosity 1 --workspace C:/Users/heris/AppData/Local/Temp/mxAI_workspace74793268575008561471928848017459 --output C:/Users/heris/Documents/STM32/IA_embarquee",
+        "arguments": "generate --target stm32l4 --name failure_prediction -m C:/Users/heris/Documents/STM32/IA_embarquee/model/failure_prediction_model.tflite --compression medium --verbosity 1 --workspace C:/Users/heris/AppData/Local/Temp/mxAI_workspace126895410540010146586405841965197 --output C:/Users/heris/.stm32cubemx/failure_prediction_output",
         "environment": [
           "STATS_TYPE=X-CUBE-AI"
         ],
