@@ -1,0 +1,8 @@
+numpy
+pyserial
+pandas
+matplotlib
+tensorflow
+scikit-learn
+imbalanced-learn
+notebook

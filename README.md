@@ -61,11 +61,11 @@ Le développement a été structuré autour de trois outils complémentaires :
 * **X-CUBE-AI** : Outil de conversion permettant de transformer les modèles de haut niveau (Keras/H5) en code C optimisé pour le processeur ARM Cortex-M.
 
 ### 3.2. Guide de mise en œuvre rapide (QuickStart)
-1.  **Entraînement** : Exécuter le notebook pour générer l'archive `.h5`.
+1.  **Entraînement** : Exécuter le notebook pour générer l'archive `.tflite` contenant les paramètres de notre réseau neuronal entrainé et les fichiers .npy contenant les données de test.
 2.  **Conversion** : Importer le modèle dans le plugin X-CUBE-AI de CubeIDE.
 3.  **Analyse** : Valider l'occupation de la RAM/Flash et générer les bibliothèques C.
-4.  **Déploiement** : Compiler et flasher le binaire sur la carte STM32L4R9.
-5.  **Test** : Lancer `ports.py` sur l'ordinateur hôte pour visualiser les prédictions en temps réel.
+4.  **Déploiement** : Compiler et flasher le binaire sur la carte STM32L4R9. Le projet CubeIDE complet se situe dans le dossier Embedded_AI et permet de passer les étapes précédentes directement.
+5.  **Test** : Lancer `Communication_STM32_NN.py` sur l'ordinateur hôte pour visualiser les prédictions en temps réel.
 
 ## 4. Analyse du Jeu de Données
 
