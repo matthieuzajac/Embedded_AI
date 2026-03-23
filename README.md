@@ -1,4 +1,51 @@
+# Quickstart
+
+Cette section explique comment préparer l'environnement Python, entraîner le modèle IA, construire/flasher le projet STM32 CubeIDE et exécuter le script de communication UART.
+
+1) Créer l'environnement Python et installer les dépendances (Windows)
+
+- Ouvrir PowerShell à la racine du dépôt (C:\embedded AI\Embedded_AI)
+- Créer et activer un environnement virtuel :
+
+  python -m venv venv
+  .\venv\Scripts\Activate.ps1  # ou utilisez `venv\Scripts\activate` dans CMD
+
+- Installer les dépendances :
+
+  pip install --upgrade pip
+  pip install -r requirements.txt
+
+Remarque : requirements.txt contient les paquets Python nécessaires pour exécuter le notebook d'entraînement et le script de communication.
+
+2) Entraîner le modèle avec le notebook
+
+- Lancer Jupyter et ouvrir TP_IA_EMBARQUEE.ipynb :
+
+  jupyter notebook TP_IA_EMBARQUEE.ipynb
+
+- Exécuter les cellules dans l'ordre pour prétraiter les données et entraîner le modèle. Le notebook enregistre les artefacts dans le dossier model/ (par ex. : .h5, .tflite et X_test/Y_test .npy).
+
+3) Construire et flasher le projet STM32 (STM32CubeIDE)
+
+- Ouvrir STM32CubeIDE.
+- Importer le projet : File → Open Projects from File System et sélectionner le dossier Embedded_AI (ou CubeIDE) de ce dépôt.
+- Compiler le projet (Project → Build) et flasher la carte STM32L4R9 via Run → Debug ou Run → Run.
+
+4) Exécuter le script de communication UART pour tester les prédictions
+
+- Configurer le port série utilisé par le STM32 dans Communication_STM32_NN.py en modifiant la variable PORT en haut du fichier (par défaut : "COM10"). Vérifier que le débit (baud rate) est le même que dans le firmware (115200).
+- Exécuter le script depuis la racine du dépôt avec l'environnement virtuel activé :
+
+  python Communication_STM32_NN.py
+
+- Le script se synchronise avec le STM32, envoie les entrées depuis model/X_test.npy et affiche les sorties attendues et reçues.
+
+Conseils :
+- Si le script ne trouve pas les fichiers modèle, vérifier que le notebook a bien écrit X_test.npy et y_test.npy dans le dossier model/ (noms exacts attendus par le script).
+- Sous Windows, identifier le port COM correct via le Gestionnaire de périphériques.
+
 ---
+
 title: "Rapport de Projet : Intelligence Artificielle Embarquée"
 author: "RABET Gilles, ZAJAC Matthieu"
 date: "Mars 2026"
@@ -21,24 +68,24 @@ Le flux de travail a été divisé en cinq phases majeures :
 
 ### Structure du répertoire
 ```text
-projet_IA
-├── CubeIDE                             # Projet STM32CubeIDE complet
+.
+├── Colab_IA_EMBARQUEE/                  # Notebooks et ressources pour Google Colab
+├── Embedded_AI/                         # Projet STM32CubeIDE complet
 │   ├── Core
 │   │   ├── Inc
-│   │   │   └── main.h                  # Headers principaux
+│   │   │   └── main.h
 │   │   └── Src
-│   │       └── main.c                  # Logique applicative en C
-│   ├── app-x-cube.c                    # Interface d'appel de l'IA
-│   └── app-x-cube.h
-├── TP_IA_EMBARQUEE.ipynb               # Pipeline d'entraînement
-├── model                               # Artefacts du modèle
-│   ├── failure_predictive_model.h5     # Poids du modèle entraîné
-│   ├── X_test.npy                  # Échantillons de test
-│   └── Y_test.npy                  # Labels de test
-├── README.md                       # Documentation technique
-├── images                          # Ressources visuelles du rapport
-└── Communication_STM32_NN.py       # Utilitaire de communication série
-
+│   │       └── main.c
+│   ├── app-x-cube.c
+│   │   └── app-x-cube.h
+├── TP_IA_EMBARQUEE.ipynb                 # Pipeline d'entraînement (notebook)
+├── model/                                # Artefacts du modèle (.h5, .tflite, .npy)
+├── Images/                               # Ressources visuelles du rapport
+├── MNIST/                                # Dataset MNIST utils/examples
+├── Communication_STM32_NN.py             # Utilitaire de communication série
+├── requirements.txt
+├── README.md
+└── LICENSE.txt
 ```
 ## 2. Introduction
 
@@ -54,18 +101,13 @@ En déportant l'intelligence directement "à la périphérie" (Edge Computing), 
 ## 3. Configuration et Environnement Technique
 
 ### 3.1. Écosystème Logiciel
-Le développement a été structuré autour de trois outils complémentaires :
+Le développement a été structuré autour de quatre outils complémentaires :
 
 * **Jupiter Notebook** : Utilisé pour l'exploration de données et l'entraînement du modèle.
 * **STM32CubeIDE** : Environnement pour le développement du firmware et la gestion des ressources matérielles de la carte.
 * **X-CUBE-AI** : Outil de conversion permettant de transformer les modèles de haut niveau (Keras/H5) en code C optimisé pour le processeur ARM Cortex-M.
+* **Communication_STM32_NN** : Script Python pour la communication avec la carte et l'évaluation du modèle
 
-### 3.2. Guide de mise en œuvre rapide (QuickStart)
-1.  **Entraînement** : Exécuter le notebook pour générer l'archive `.tflite` contenant les paramètres de notre réseau neuronal entrainé et les fichiers .npy contenant les données de test.
-2.  **Conversion** : Importer le modèle dans le plugin X-CUBE-AI de CubeIDE.
-3.  **Analyse** : Valider l'occupation de la RAM/Flash et générer les bibliothèques C.
-4.  **Déploiement** : Compiler et flasher le binaire sur la carte STM32L4R9. Le projet CubeIDE complet se situe dans le dossier Embedded_AI et permet de passer les étapes précédentes directement.
-5.  **Test** : Lancer `Communication_STM32_NN.py` sur l'ordinateur hôte pour visualiser les prédictions en temps réel.
 
 ## 4. Analyse du Jeu de Données
 
