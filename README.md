@@ -4,7 +4,7 @@ Cette section explique comment préparer l'environnement Python, entraîner le m
 
 1) Créer l'environnement Python et installer les dépendances (Windows)
 
-- Ouvrir PowerShell à la racine du dépôt (C:\embedded AI\Embedded_AI)
+- Ouvrir un terminal à la racine du dépôt (C:\embedded AI\Embedded_AI)
 - Créer et activer un environnement virtuel :
 
   python -m venv venv
@@ -186,10 +186,9 @@ Cette approche permet de présenter au modèle un set d'entraînement équilibr�
 Nous avons opté pour une architecture multicouche dense, dimensionnée pour capturer les non-linéarités des capteurs tout en restant compatible avec les ressources d'un microcontrôleur.
 
 ### 6.1. Structure du Modèle
-Le modèle est un réseau séquentiel composé de trois couches :
-* **Couche 1** : 256 neurones, activation ReLU, régularisation L2 ($1e-4$).
-* **Couche 2** : 128 neurones, activation ReLU, régularisation L2 ($1e-4$).
-* **Couche 3** : 64 neurones, activation ReLU, régularisation L2 ($1e-4$).
+Le modèle est un réseau séquentiel composé de deux couches :
+* **Couche 1** : 64 neurones, activation ReLU, régularisation L2 ($1e-4$).
+* **Couche 2** : 64 neurones, activation ReLU, régularisation L2 ($1e-4$).
 * **Sortie** : 5 neurones avec activation Softmax pour la classification multi-classe.
 
 ### 6.2. Régularisation et Optimisation
@@ -205,31 +204,37 @@ Pour prévenir le surapprentissage (overfitting) lié à l'augmentation synthét
 ### 7.1. Optimisation du Seuil de Décision (Threshold Tuning)
 Dans un contexte industriel, le coût d'une fausse alarme (arrêt machine injustifié) est souvent plus critique que le coût d'une panne manquée. Pour répondre à cet impératif, nous avons implémenté une recherche de seuil optimal sur les probabilités de sortie du Softmax.
 
-Le modèle ne valide une catégorie de panne que si sa confiance dépasse 0,95. En dessous de ce seuil, la prédiction est forcée à "No Failure". Ce choix stratégique permet de garantir une haute fiabilité des alertes envoyées à l'opérateur, limitant le taux de fausses alarmes à seulement 3,01 % (58 cas sur 1929 échantillons sains).
+Le modèle ne valide une catégorie de panne que si sa confiance dépasse 0,95. En dessous de ce seuil, la prédiction est forcée à "No Failure". Ce choix stratégique permet de garantir une haute fiabilité des alertes envoyées à l'opérateur; le meilleur seuil trouvé (0,95) donne un taux de fausses alarmes de 3,94 % (76 cas sur 1929 échantillons sains).
 
 ### 7.2. Évaluation Globale sur le Set de Test Original
 L'évaluation finale, réalisée sur les données réelles (non rééquilibrées), montre la capacité du modèle à opérer dans un environnement de production :
 
 | Métrique | Valeur | Interprétation |
 | :--- | :---: | :--- |
-| **Précision Globale (Accuracy)** | **96%** | Capacité générale à classer correctement un état machine. |
-| **Macro Average Recall** | **0,66** | Capacité moyenne à détecter les différents types de pannes. |
-| **Macro Average F1-Score** | **0,56** | Équilibre entre précision et rappel sur l'ensemble des classes. |
-| **Taux de Fausses Alarmes** | **3,01%** | Proportion de prédictions de pannes erronées sur les machines saines. |
+| **Précision Globale (Accuracy)** | **95%** | Capacité générale à classer correctement un état machine. |
+| **Macro Average Recall** | **0,75** | Capacité moyenne à détecter les différents types de pannes. |
+| **Macro Average F1-Score** | **0,60** | Équilibre entre précision et rappel sur l'ensemble des classes. |
+| **Taux de Fausses Alarmes** | **3,94%** | Proportion de prédictions de pannes erronées sur les machines saines. |
 
 ### 7.3. Analyse Détaillée par Diagnostic de Panne
 Le rapport de classification nous permet d'identifier les forces et les limites du modèle pour chaque type de défaillance :
 
-* **HDF (Heat Dissipation Failure)** : C'est le succès majeur du modèle avec un rappel de 0,83. Cela signifie que 83 % des pannes de dissipation thermique sont détectées.
-* **PWF (Power Failure)** : Avec un score F1 de 0,69, le modèle est robuste pour identifier les pannes de puissance.
-* **TWF (Tool Wear Failure)** : Le modèle affiche un rappel correct (0,67) mais une précision faible (0,15). Concrètement, le modèle est "pessimiste" : il détecte bien l'usure d'outil, mais génère des suspicions prématurées.
-* **OSF (Overstrain Failure)** : C'est la classe la plus difficile avec un rappel de 0,19. Les pannes de surcharge semblent se confondre avec des pics de couple normaux au seuil de confiance de 0,95. Une analyse ultérieure pourrait nécessiter des features de séries temporelles plus riches pour cette classe.
+* **HDF (Heat Dissipation Failure)** : précision 0,47, rappel 0,96, F1 0,63 (support 23) — très bonne détection (rappel élevé) mais nombreuses fausses alarmes (précision faible).
+* **PWF (Power Failure)** : précision 0,70, rappel 0,78, F1 0,74 (support 18) — performance équilibrée et satisfaisante.
+* **TWF (Tool Wear Failure)** : précision 0,12, rappel 0,67, F1 0,21 (support 9) — rappel correct mais très faible précision; support très faible, métriques instables.
+* **OSF (Overstrain Failure)** : précision 0,60, rappel 0,38, F1 0,46 (support 16) — rappel faible (beaucoup de pannes manquées); métriques peu stables à cause du faible support.
 
-### 7.4. Conclusion Critique : Un Modèle aux Performances Perfectibles
+### 7.4. Conclusion critique
 
-Bien que le modèle affiche une précision globale flatteuse de 96 %, une analyse rigoureuse des métriques par classe tempère ce résultat. L'utilisation d'un seuil de décision élevé (0,95) permet certes de limiter les fausses alarmes, mais elle masque une incapacité réelle du modèle à diagnostiquer de manière fiable certaines catégories de pannes.
+Le modèle atteint une précision globale de **95%** mais les métriques par classe montrent des limites importantes : macro recall ≈ **0.75** et macro F1 ≈ **0.60**. Le seuil choisi (0.95) réduit les fausses alarmes (3,94 %) au prix d'un compromis entre rappel et précision selon les classes.
 
-Le rappel de 0,19 pour les pannes de surcharge (OSF) est un point d'échec majeur : le modèle manque plus de 80 % de ces défaillances. De même, la précision très faible sur l'usure d'outil (TWF : 0,15) génère une incertitude telle que l'alerte perd de sa crédibilité opérationnelle. En l'état, le modèle est davantage un détecteur de "bonne santé" qu'un véritable outil de diagnostic prédictif multi-classes. Le déploiement sur STM32 est donc techniquement possible, mais son utilité métier reste limitée par ces lacunes de détection.
+Points clés :
+- Les classes majoritaires (`No Failure`) tirent la métrique globale vers le haut; les performances pondérées cachent la variabilité par classe.
+- `HDF` : fort rappel (≈0.96) mais faible précision → nombreuses fausses alarmes.
+- `PWF` : performance équilibrée (F1 ≈ 0.74).
+- `OSF` et `TWF` : support très faible et métriques instables (OSF rappel faible, TWF précision très faible) — ces classes restent peu fiables.
+
+Conclusion : le modèle est utile pour détecter l'état sain (« no failure ») et améliore la détection des pannes par rapport au cas non rééquilibré, mais il n'est pas suffisamment robuste pour un diagnostic multi-classe opérationnel sans actions complémentaires (plus de données pour OSF/TWF, coût de l'erreur adapté, ou techniques d'apprentissage spécifiques).
 
 ---
 
@@ -256,17 +261,20 @@ Le passage du modèle théorique à l'implémentation physique a été réalisé
 
 ### 9.1. Analyse des Ressources (Analyse statique)
 
-L'analyse du modèle `failure_prediction_model.tflite` avec une compression medium a généré les métriques d'occupation mémoire suivantes :
+L'analyse du modèle `failure_prediction_model.tflite` (compression `medium`) fournie par X-CUBE-AI retourne les métriques d'occupation suivantes :
 
 | Ressource | Taille (Octets) | Taille (KiB) | Commentaire |
 | :--- | :---: | :---: | :--- |
-| **FLASH (Poids/Weights)** | 24 532 B | 23,96 KiB | Stockage non-volatile des paramètres. |
-| **FLASH (Librairie)** | 10 646 B | 10,40 KiB | Code de l'infrastructure de calcul. |
-| **RAM (Activations)** | 1 536 B | 1,50 KiB | Buffer nécessaire pour le calcul des couches. |
-| **RAM (Total)** | 4 020 B | 3,93 KiB | Empreinte mémoire vive totale en exécution. |
+| **FLASH (Weights)** | 24 532 B | 23,96 KiB | Poids/paramètres du réseau stockés en flash. |
+| **FLASH (Kernel / Runtime)** | 10 646 B | 10,40 KiB | Code de l'infrastructure (X-CUBE-AI runtime). |
+| **FLASH (Toolchain artefact)** | 638 B | 0,62 KiB | Données liées au toolchain généré. |
+| **RAM (Activations)** | 1 536 B | 1,50 KiB | Buffers pour activations pendant l'inférence. |
+| **RAM (Kernel)** | 2 484 B | 2,43 KiB | Usage RAM du runtime / kernel. |
+| **RAM (Total)** | 4 020 B | 3,93 KiB | Somme des activations et du kernel RAM (exécution). |
 
-**Performance de calcul :**
-Le modèle présente une complexité de 43 536 MACC (Multiply-Accumulate operations). Sur une architecture Cortex-M4 cadencée à 120 MHz, l'inférence est quasi instantanée (estimée à moins de 0,1 ms par échantillon), ce qui laisse une marge de manœuvre considérable pour d'autres tâches de contrôle-commande.
+Toolchain / version rapportée : `arm-none-eabi-gcc 13.3.1` (fourni par X-CUBE-AI).
+
+**Remarque sur la performance** : le total des MACC des couches est de l'ordre de **43 536 MACC**. Sur un Cortex-M4 à fréquence nominale, l'inférence est extrêmement rapide et l'empreinte mémoire (≈4 KiB RAM, ≈35 KiB flash total) est compatible avec la plupart des cibles STM32L4.
 
 ![Figure 9 : Rapport d'analyse statique X-CUBE-AI](./images/analyse.png)
 
@@ -276,7 +284,7 @@ Avant l'intégration, nous avons effectué une validation croisée sur PC (Deskt
 * **Résultat** : **Accuracy = 100,00 %**
 * **Erreur RMSE** : $5,46 \times 10^{-3}$
 
-![Figure 9 : Rapport d'analyse statique X-CUBE-AI](./images/Analyse2.png)
+![Figure 9 : Rapport d'analyse statique X-CUBE-AI](./images/analyse3.png)
 
 Cette validation confirme que la conversion et la compression n'ont pas dégradé la logique décisionnelle de notre réseau de neurones.
 
@@ -345,7 +353,7 @@ La fonction `evaluate_model_on_STM32()` automatise le test sur l'ensemble du set
 3. Elle compare l'indice de la probabilité maximale (**Argmax**) du retour STM32 avec celui du label de référence (**Y_test**).
 4. Elle calcule une précision cumulée en temps réel.
 
-![Figure 11 : Capture d'écran du terminal lors de l'exécution du script Communication_STM32_NN.py](./images/terminal_result.png)
+![Figure 11 : Capture d'écran du terminal lors de l'exécution du script Communication_STM32_NN.py](./images/image.png)
 > *Note : On peut observer dans le terminal la comparaison entre "Expected output" (Colab) et "Received output" (STM32), confirmant la parfaite adéquation du déploiement.*
 
 ---
