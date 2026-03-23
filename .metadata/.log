@@ -3129,3 +3129,642 @@ org.eclipse.core.runtime.CoreException: Corrupted database: Embedded_AI.17720069
 	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
 !SUBENTRY 1 org.eclipse.cdt.core 4 0 2026-03-13 11:32:41.272
 !MESSAGE Corrupted database: Embedded_AI.1772006973124.pdom
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-13 11:47:34.203
+!MESSAGE Executed PowerShell command powershell.exe -Command "Get-CimInstance -ClassName Win32_SerialPort | Select-Object -ExpandProperty DeviceID":
+COM4
+COM6
+COM5
+
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-13 11:47:34.203
+!MESSAGE port: COM4
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-13 11:47:34.204
+!MESSAGE port: COM6
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-13 11:47:34.205
+!MESSAGE port: COM5
+!SESSION 2026-03-23 11:05:57.697 -----------------------------------------------
+eclipse.buildId=Version 2.0.0
+java.version=21.0.8
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=fr_FR
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2026-03-23 11:06:22.003
+!MESSAGE Log4j2 initialized with config file C:\Users\heris\Documents\STM32\IA_embarquee\.metadata\.log4j2.xml
+
+!ENTRY org.eclipse.cdt.core 4 0 2026-03-23 11:06:36.462
+!MESSAGE Error
+!STACK 1
+org.eclipse.core.runtime.CoreException: Corrupted database: Embedded_AI.1772006973124.pdom
+	at org.eclipse.cdt.internal.core.pdom.db.Database.databaseCorruptionDetected(Database.java:323)
+	at org.eclipse.cdt.internal.core.pdom.db.Database.getChunk(Database.java:303)
+	at org.eclipse.cdt.internal.core.pdom.db.BTree.accept(BTree.java:555)
+	at org.eclipse.cdt.internal.core.pdom.db.BTree.accept(BTree.java:541)
+	at org.eclipse.cdt.internal.core.pdom.dom.PDOMFile.findFiles(PDOMFile.java:771)
+	at org.eclipse.cdt.internal.core.pdom.PDOM.getFiles(PDOM.java:603)
+	at org.eclipse.cdt.internal.core.index.CIndex.getFiles(CIndex.java:260)
+	at org.eclipse.cdt.internal.core.model.TranslationUnit.getContextToHeader(TranslationUnit.java:936)
+	at org.eclipse.cdt.internal.core.model.TranslationUnit.getAST(TranslationUnit.java:848)
+	at org.eclipse.cdt.internal.core.model.TranslationUnit.getAST(TranslationUnit.java:843)
+	at org.eclipse.cdt.internal.core.model.ASTCache$1.run(ASTCache.java:361)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:47)
+	at org.eclipse.cdt.internal.core.model.ASTCache.createAST(ASTCache.java:354)
+	at org.eclipse.cdt.internal.core.model.ASTCache.getAST(ASTCache.java:175)
+	at org.eclipse.cdt.internal.core.model.ASTCache.acquireSharedAST(ASTCache.java:265)
+	at org.eclipse.cdt.internal.core.model.ASTCache.runOnAST(ASTCache.java:223)
+	at org.eclipse.cdt.internal.ui.editor.ASTProvider.runOnAST(ASTProvider.java:338)
+	at org.eclipse.cdt.internal.ui.viewsupport.SelectionListenerWithASTManager$PartListenerGroup.calculateASTandInform(SelectionListenerWithASTManager.java:166)
+	at org.eclipse.cdt.internal.ui.viewsupport.SelectionListenerWithASTManager$PartListenerGroup$1.run(SelectionListenerWithASTManager.java:139)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+!SUBENTRY 1 org.eclipse.cdt.core 4 0 2026-03-23 11:06:36.469
+!MESSAGE Corrupted database: Embedded_AI.1772006973124.pdom
+
+!ENTRY org.eclipse.cdt.core 4 0 2026-03-23 11:06:36.515
+!MESSAGE Error
+!STACK 1
+org.eclipse.core.runtime.CoreException: Corrupted database: Embedded_AI.1772006973124.pdom
+	at org.eclipse.cdt.internal.core.pdom.db.Database.databaseCorruptionDetected(Database.java:323)
+	at org.eclipse.cdt.internal.core.pdom.db.Database.getChunk(Database.java:303)
+	at org.eclipse.cdt.internal.core.pdom.db.BTree.accept(BTree.java:555)
+	at org.eclipse.cdt.internal.core.pdom.db.BTree.accept(BTree.java:541)
+	at org.eclipse.cdt.internal.core.pdom.dom.PDOMFile.findFiles(PDOMFile.java:771)
+	at org.eclipse.cdt.internal.core.pdom.PDOM.getFiles(PDOM.java:603)
+	at org.eclipse.cdt.internal.core.index.CIndex.getFiles(CIndex.java:260)
+	at org.eclipse.cdt.internal.core.index.IndexBasedFileContentProvider.selectIndexFile(IndexBasedFileContentProvider.java:178)
+	at org.eclipse.cdt.internal.core.index.IndexBasedFileContentProvider.getContentForInclusion(IndexBasedFileContentProvider.java:133)
+	at org.eclipse.cdt.internal.core.parser.scanner.CPreprocessor$1.checkFile(CPreprocessor.java:198)
+	at org.eclipse.cdt.internal.core.parser.scanner.CPreprocessor$1.checkFile(CPreprocessor.java:1)
+	at org.eclipse.cdt.internal.core.parser.scanner.CPreprocessor.findInclusion(CPreprocessor.java:1394)
+	at org.eclipse.cdt.internal.core.parser.scanner.CPreprocessor.executeInclude(CPreprocessor.java:1739)
+	at org.eclipse.cdt.internal.core.parser.scanner.CPreprocessor.executeDirective(CPreprocessor.java:1517)
+	at org.eclipse.cdt.internal.core.parser.scanner.CPreprocessor.internalFetchToken(CPreprocessor.java:981)
+	at org.eclipse.cdt.internal.core.parser.scanner.CPreprocessor.fetchToken(CPreprocessor.java:682)
+	at org.eclipse.cdt.internal.core.parser.scanner.CPreprocessor.nextToken(CPreprocessor.java:780)
+	at org.eclipse.cdt.internal.core.dom.parser.AbstractGNUSourceCodeParser.fetchToken(AbstractGNUSourceCodeParser.java:292)
+	at org.eclipse.cdt.internal.core.dom.parser.AbstractGNUSourceCodeParser.nextToken(AbstractGNUSourceCodeParser.java:331)
+	at org.eclipse.cdt.internal.core.dom.parser.AbstractGNUSourceCodeParser.acceptInactiveCodeBoundary(AbstractGNUSourceCodeParser.java:392)
+	at org.eclipse.cdt.internal.core.dom.parser.AbstractGNUSourceCodeParser.declarationList(AbstractGNUSourceCodeParser.java:1397)
+	at org.eclipse.cdt.internal.core.dom.parser.AbstractGNUSourceCodeParser.parseTranslationUnit(AbstractGNUSourceCodeParser.java:1368)
+	at org.eclipse.cdt.internal.core.dom.parser.AbstractGNUSourceCodeParser.translationUnit(AbstractGNUSourceCodeParser.java:1363)
+	at org.eclipse.cdt.internal.core.dom.parser.AbstractGNUSourceCodeParser.parse(AbstractGNUSourceCodeParser.java:688)
+	at org.eclipse.cdt.core.dom.parser.AbstractCLikeLanguage.getASTTranslationUnit(AbstractCLikeLanguage.java:171)
+	at org.eclipse.cdt.internal.core.model.TranslationUnit.getAST(TranslationUnit.java:886)
+	at org.eclipse.cdt.internal.core.model.TranslationUnit.getAST(TranslationUnit.java:843)
+	at org.eclipse.cdt.internal.core.model.ASTCache$1.run(ASTCache.java:361)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:47)
+	at org.eclipse.cdt.internal.core.model.ASTCache.createAST(ASTCache.java:354)
+	at org.eclipse.cdt.internal.core.model.ASTCache.getAST(ASTCache.java:175)
+	at org.eclipse.cdt.internal.core.model.ASTCache.acquireSharedAST(ASTCache.java:265)
+	at org.eclipse.cdt.internal.core.model.ASTCache.runOnAST(ASTCache.java:223)
+	at org.eclipse.cdt.internal.ui.editor.ASTProvider.runOnAST(ASTProvider.java:338)
+	at org.eclipse.cdt.internal.ui.viewsupport.SelectionListenerWithASTManager$PartListenerGroup.calculateASTandInform(SelectionListenerWithASTManager.java:166)
+	at org.eclipse.cdt.internal.ui.viewsupport.SelectionListenerWithASTManager$PartListenerGroup$1.run(SelectionListenerWithASTManager.java:139)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+!SUBENTRY 1 org.eclipse.cdt.core 4 0 2026-03-23 11:06:36.516
+!MESSAGE Corrupted database: Embedded_AI.1772006973124.pdom
+
+!ENTRY org.eclipse.cdt.core 4 0 2026-03-23 11:06:36.525
+!MESSAGE Error
+!STACK 1
+org.eclipse.core.runtime.CoreException: Corrupted database: Embedded_AI.1772006973124.pdom
+	at org.eclipse.cdt.internal.core.pdom.db.Database.databaseCorruptionDetected(Database.java:323)
+	at org.eclipse.cdt.internal.core.pdom.db.Database.getChunk(Database.java:303)
+	at org.eclipse.cdt.internal.core.pdom.db.BTree.accept(BTree.java:555)
+	at org.eclipse.cdt.internal.core.pdom.db.BTree.accept(BTree.java:541)
+	at org.eclipse.cdt.internal.core.pdom.dom.PDOMFile.findFiles(PDOMFile.java:771)
+	at org.eclipse.cdt.internal.core.pdom.PDOM.getFiles(PDOM.java:603)
+	at org.eclipse.cdt.internal.core.index.CIndex.getFiles(CIndex.java:260)
+	at org.eclipse.cdt.internal.core.index.IndexBasedFileContentProvider.selectIndexFile(IndexBasedFileContentProvider.java:178)
+	at org.eclipse.cdt.internal.core.index.IndexBasedFileContentProvider.getContentForInclusion(IndexBasedFileContentProvider.java:133)
+	at org.eclipse.cdt.internal.core.parser.scanner.CPreprocessor$1.checkFile(CPreprocessor.java:198)
+	at org.eclipse.cdt.internal.core.parser.scanner.CPreprocessor$1.checkFile(CPreprocessor.java:1)
+	at org.eclipse.cdt.internal.core.parser.scanner.CPreprocessor.findInclusion(CPreprocessor.java:1394)
+	at org.eclipse.cdt.internal.core.parser.scanner.CPreprocessor.executeInclude(CPreprocessor.java:1739)
+	at org.eclipse.cdt.internal.core.parser.scanner.CPreprocessor.executeDirective(CPreprocessor.java:1517)
+	at org.eclipse.cdt.internal.core.parser.scanner.CPreprocessor.internalFetchToken(CPreprocessor.java:981)
+	at org.eclipse.cdt.internal.core.parser.scanner.CPreprocessor.fetchToken(CPreprocessor.java:682)
+	at org.eclipse.cdt.internal.core.parser.scanner.CPreprocessor.nextToken(CPreprocessor.java:780)
+	at org.eclipse.cdt.internal.core.dom.parser.AbstractGNUSourceCodeParser.fetchToken(AbstractGNUSourceCodeParser.java:292)
+	at org.eclipse.cdt.internal.core.dom.parser.AbstractGNUSourceCodeParser.nextToken(AbstractGNUSourceCodeParser.java:331)
+	at org.eclipse.cdt.internal.core.dom.parser.AbstractGNUSourceCodeParser.acceptInactiveCodeBoundary(AbstractGNUSourceCodeParser.java:392)
+	at org.eclipse.cdt.internal.core.dom.parser.AbstractGNUSourceCodeParser.declarationList(AbstractGNUSourceCodeParser.java:1397)
+	at org.eclipse.cdt.internal.core.dom.parser.AbstractGNUSourceCodeParser.parseTranslationUnit(AbstractGNUSourceCodeParser.java:1368)
+	at org.eclipse.cdt.internal.core.dom.parser.AbstractGNUSourceCodeParser.translationUnit(AbstractGNUSourceCodeParser.java:1363)
+	at org.eclipse.cdt.internal.core.dom.parser.AbstractGNUSourceCodeParser.parse(AbstractGNUSourceCodeParser.java:688)
+	at org.eclipse.cdt.core.dom.parser.AbstractCLikeLanguage.getASTTranslationUnit(AbstractCLikeLanguage.java:171)
+	at org.eclipse.cdt.internal.core.model.TranslationUnit.getAST(TranslationUnit.java:886)
+	at org.eclipse.cdt.internal.core.model.TranslationUnit.getAST(TranslationUnit.java:843)
+	at org.eclipse.cdt.internal.core.model.ASTCache$1.run(ASTCache.java:361)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:47)
+	at org.eclipse.cdt.internal.core.model.ASTCache.createAST(ASTCache.java:354)
+	at org.eclipse.cdt.internal.core.model.ASTCache.getAST(ASTCache.java:175)
+	at org.eclipse.cdt.internal.core.model.ASTCache.acquireSharedAST(ASTCache.java:265)
+	at org.eclipse.cdt.internal.core.model.ASTCache.runOnAST(ASTCache.java:223)
+	at org.eclipse.cdt.internal.ui.editor.ASTProvider.runOnAST(ASTProvider.java:338)
+	at org.eclipse.cdt.internal.ui.viewsupport.SelectionListenerWithASTManager$PartListenerGroup.calculateASTandInform(SelectionListenerWithASTManager.java:166)
+	at org.eclipse.cdt.internal.ui.viewsupport.SelectionListenerWithASTManager$PartListenerGroup$1.run(SelectionListenerWithASTManager.java:139)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+!SUBENTRY 1 org.eclipse.cdt.core 4 0 2026-03-23 11:06:36.525
+!MESSAGE Corrupted database: Embedded_AI.1772006973124.pdom
+
+!ENTRY org.eclipse.cdt.core 4 0 2026-03-23 11:06:36.533
+!MESSAGE Error
+!STACK 1
+org.eclipse.core.runtime.CoreException: Corrupted database: Embedded_AI.1772006973124.pdom
+	at org.eclipse.cdt.internal.core.pdom.db.Database.databaseCorruptionDetected(Database.java:323)
+	at org.eclipse.cdt.internal.core.pdom.db.Database.getChunk(Database.java:303)
+	at org.eclipse.cdt.internal.core.pdom.db.BTree.accept(BTree.java:555)
+	at org.eclipse.cdt.internal.core.pdom.db.BTree.accept(BTree.java:541)
+	at org.eclipse.cdt.internal.core.pdom.dom.PDOMFile.findFiles(PDOMFile.java:771)
+	at org.eclipse.cdt.internal.core.pdom.PDOM.getFiles(PDOM.java:603)
+	at org.eclipse.cdt.internal.core.index.CIndex.getFiles(CIndex.java:260)
+	at org.eclipse.cdt.internal.core.index.IndexBasedFileContentProvider.selectIndexFile(IndexBasedFileContentProvider.java:178)
+	at org.eclipse.cdt.internal.core.index.IndexBasedFileContentProvider.getContentForInclusion(IndexBasedFileContentProvider.java:133)
+	at org.eclipse.cdt.internal.core.parser.scanner.CPreprocessor$1.checkFile(CPreprocessor.java:198)
+	at org.eclipse.cdt.internal.core.parser.scanner.CPreprocessor$1.checkFile(CPreprocessor.java:1)
+	at org.eclipse.cdt.internal.core.parser.scanner.CPreprocessor.findInclusion(CPreprocessor.java:1394)
+	at org.eclipse.cdt.internal.core.parser.scanner.CPreprocessor.executeInclude(CPreprocessor.java:1739)
+	at org.eclipse.cdt.internal.core.parser.scanner.CPreprocessor.executeDirective(CPreprocessor.java:1517)
+	at org.eclipse.cdt.internal.core.parser.scanner.CPreprocessor.internalFetchToken(CPreprocessor.java:981)
+	at org.eclipse.cdt.internal.core.parser.scanner.CPreprocessor.fetchToken(CPreprocessor.java:682)
+	at org.eclipse.cdt.internal.core.parser.scanner.CPreprocessor.nextToken(CPreprocessor.java:780)
+	at org.eclipse.cdt.internal.core.dom.parser.AbstractGNUSourceCodeParser.fetchToken(AbstractGNUSourceCodeParser.java:292)
+	at org.eclipse.cdt.internal.core.dom.parser.AbstractGNUSourceCodeParser.nextToken(AbstractGNUSourceCodeParser.java:331)
+	at org.eclipse.cdt.internal.core.dom.parser.AbstractGNUSourceCodeParser.acceptInactiveCodeBoundary(AbstractGNUSourceCodeParser.java:392)
+	at org.eclipse.cdt.internal.core.dom.parser.AbstractGNUSourceCodeParser.declarationList(AbstractGNUSourceCodeParser.java:1397)
+	at org.eclipse.cdt.internal.core.dom.parser.AbstractGNUSourceCodeParser.parseTranslationUnit(AbstractGNUSourceCodeParser.java:1368)
+	at org.eclipse.cdt.internal.core.dom.parser.AbstractGNUSourceCodeParser.translationUnit(AbstractGNUSourceCodeParser.java:1363)
+	at org.eclipse.cdt.internal.core.dom.parser.AbstractGNUSourceCodeParser.parse(AbstractGNUSourceCodeParser.java:688)
+	at org.eclipse.cdt.core.dom.parser.AbstractCLikeLanguage.getASTTranslationUnit(AbstractCLikeLanguage.java:171)
+	at org.eclipse.cdt.internal.core.model.TranslationUnit.getAST(TranslationUnit.java:886)
+	at org.eclipse.cdt.internal.core.model.TranslationUnit.getAST(TranslationUnit.java:843)
+	at org.eclipse.cdt.internal.core.model.ASTCache$1.run(ASTCache.java:361)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:47)
+	at org.eclipse.cdt.internal.core.model.ASTCache.createAST(ASTCache.java:354)
+	at org.eclipse.cdt.internal.core.model.ASTCache.getAST(ASTCache.java:175)
+	at org.eclipse.cdt.internal.core.model.ASTCache.acquireSharedAST(ASTCache.java:265)
+	at org.eclipse.cdt.internal.core.model.ASTCache.runOnAST(ASTCache.java:223)
+	at org.eclipse.cdt.internal.ui.editor.ASTProvider.runOnAST(ASTProvider.java:338)
+	at org.eclipse.cdt.internal.ui.viewsupport.SelectionListenerWithASTManager$PartListenerGroup.calculateASTandInform(SelectionListenerWithASTManager.java:166)
+	at org.eclipse.cdt.internal.ui.viewsupport.SelectionListenerWithASTManager$PartListenerGroup$1.run(SelectionListenerWithASTManager.java:139)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+!SUBENTRY 1 org.eclipse.cdt.core 4 0 2026-03-23 11:06:36.534
+!MESSAGE Corrupted database: Embedded_AI.1772006973124.pdom
+
+!ENTRY org.eclipse.cdt.core 4 0 2026-03-23 11:06:36.542
+!MESSAGE Error
+!STACK 1
+org.eclipse.core.runtime.CoreException: Corrupted database: Embedded_AI.1772006973124.pdom
+	at org.eclipse.cdt.internal.core.pdom.db.Database.databaseCorruptionDetected(Database.java:323)
+	at org.eclipse.cdt.internal.core.pdom.db.Database.getChunk(Database.java:303)
+	at org.eclipse.cdt.internal.core.pdom.db.BTree.accept(BTree.java:555)
+	at org.eclipse.cdt.internal.core.pdom.db.BTree.accept(BTree.java:541)
+	at org.eclipse.cdt.internal.core.pdom.dom.PDOMFile.findFiles(PDOMFile.java:771)
+	at org.eclipse.cdt.internal.core.pdom.PDOM.getFiles(PDOM.java:603)
+	at org.eclipse.cdt.internal.core.index.CIndex.getFiles(CIndex.java:260)
+	at org.eclipse.cdt.internal.core.index.IndexBasedFileContentProvider.selectIndexFile(IndexBasedFileContentProvider.java:178)
+	at org.eclipse.cdt.internal.core.index.IndexBasedFileContentProvider.getContentForInclusion(IndexBasedFileContentProvider.java:133)
+	at org.eclipse.cdt.internal.core.parser.scanner.CPreprocessor$1.checkFile(CPreprocessor.java:198)
+	at org.eclipse.cdt.internal.core.parser.scanner.CPreprocessor$1.checkFile(CPreprocessor.java:1)
+	at org.eclipse.cdt.internal.core.parser.scanner.CPreprocessor.findInclusion(CPreprocessor.java:1394)
+	at org.eclipse.cdt.internal.core.parser.scanner.CPreprocessor.executeInclude(CPreprocessor.java:1739)
+	at org.eclipse.cdt.internal.core.parser.scanner.CPreprocessor.executeDirective(CPreprocessor.java:1517)
+	at org.eclipse.cdt.internal.core.parser.scanner.CPreprocessor.internalFetchToken(CPreprocessor.java:981)
+	at org.eclipse.cdt.internal.core.parser.scanner.CPreprocessor.fetchToken(CPreprocessor.java:682)
+	at org.eclipse.cdt.internal.core.parser.scanner.CPreprocessor.nextToken(CPreprocessor.java:780)
+	at org.eclipse.cdt.internal.core.dom.parser.AbstractGNUSourceCodeParser.fetchToken(AbstractGNUSourceCodeParser.java:292)
+	at org.eclipse.cdt.internal.core.dom.parser.AbstractGNUSourceCodeParser.nextToken(AbstractGNUSourceCodeParser.java:331)
+	at org.eclipse.cdt.internal.core.dom.parser.AbstractGNUSourceCodeParser.acceptInactiveCodeBoundary(AbstractGNUSourceCodeParser.java:392)
+	at org.eclipse.cdt.internal.core.dom.parser.AbstractGNUSourceCodeParser.declarationList(AbstractGNUSourceCodeParser.java:1397)
+	at org.eclipse.cdt.internal.core.dom.parser.AbstractGNUSourceCodeParser.parseTranslationUnit(AbstractGNUSourceCodeParser.java:1368)
+	at org.eclipse.cdt.internal.core.dom.parser.AbstractGNUSourceCodeParser.translationUnit(AbstractGNUSourceCodeParser.java:1363)
+	at org.eclipse.cdt.internal.core.dom.parser.AbstractGNUSourceCodeParser.parse(AbstractGNUSourceCodeParser.java:688)
+	at org.eclipse.cdt.core.dom.parser.AbstractCLikeLanguage.getASTTranslationUnit(AbstractCLikeLanguage.java:171)
+	at org.eclipse.cdt.internal.core.model.TranslationUnit.getAST(TranslationUnit.java:886)
+	at org.eclipse.cdt.internal.core.model.TranslationUnit.getAST(TranslationUnit.java:843)
+	at org.eclipse.cdt.internal.core.model.ASTCache$1.run(ASTCache.java:361)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:47)
+	at org.eclipse.cdt.internal.core.model.ASTCache.createAST(ASTCache.java:354)
+	at org.eclipse.cdt.internal.core.model.ASTCache.getAST(ASTCache.java:175)
+	at org.eclipse.cdt.internal.core.model.ASTCache.acquireSharedAST(ASTCache.java:265)
+	at org.eclipse.cdt.internal.core.model.ASTCache.runOnAST(ASTCache.java:223)
+	at org.eclipse.cdt.internal.ui.editor.ASTProvider.runOnAST(ASTProvider.java:338)
+	at org.eclipse.cdt.internal.ui.viewsupport.SelectionListenerWithASTManager$PartListenerGroup.calculateASTandInform(SelectionListenerWithASTManager.java:166)
+	at org.eclipse.cdt.internal.ui.viewsupport.SelectionListenerWithASTManager$PartListenerGroup$1.run(SelectionListenerWithASTManager.java:139)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+!SUBENTRY 1 org.eclipse.cdt.core 4 0 2026-03-23 11:06:36.543
+!MESSAGE Corrupted database: Embedded_AI.1772006973124.pdom
+
+!ENTRY org.eclipse.cdt.core 4 0 2026-03-23 11:06:36.551
+!MESSAGE Error
+!STACK 1
+org.eclipse.core.runtime.CoreException: Corrupted database: Embedded_AI.1772006973124.pdom
+	at org.eclipse.cdt.internal.core.pdom.db.Database.databaseCorruptionDetected(Database.java:323)
+	at org.eclipse.cdt.internal.core.pdom.db.Database.getChunk(Database.java:303)
+	at org.eclipse.cdt.internal.core.pdom.db.BTree.accept(BTree.java:555)
+	at org.eclipse.cdt.internal.core.pdom.db.BTree.accept(BTree.java:541)
+	at org.eclipse.cdt.internal.core.pdom.dom.PDOMFile.findFiles(PDOMFile.java:771)
+	at org.eclipse.cdt.internal.core.pdom.PDOM.getFiles(PDOM.java:603)
+	at org.eclipse.cdt.internal.core.index.CIndex.getFiles(CIndex.java:260)
+	at org.eclipse.cdt.internal.core.index.IndexBasedFileContentProvider.selectIndexFile(IndexBasedFileContentProvider.java:178)
+	at org.eclipse.cdt.internal.core.index.IndexBasedFileContentProvider.getContentForInclusion(IndexBasedFileContentProvider.java:133)
+	at org.eclipse.cdt.internal.core.parser.scanner.CPreprocessor$1.checkFile(CPreprocessor.java:198)
+	at org.eclipse.cdt.internal.core.parser.scanner.CPreprocessor$1.checkFile(CPreprocessor.java:1)
+	at org.eclipse.cdt.internal.core.parser.scanner.CPreprocessor.findInclusion(CPreprocessor.java:1394)
+	at org.eclipse.cdt.internal.core.parser.scanner.CPreprocessor.executeInclude(CPreprocessor.java:1739)
+	at org.eclipse.cdt.internal.core.parser.scanner.CPreprocessor.executeDirective(CPreprocessor.java:1517)
+	at org.eclipse.cdt.internal.core.parser.scanner.CPreprocessor.internalFetchToken(CPreprocessor.java:981)
+	at org.eclipse.cdt.internal.core.parser.scanner.CPreprocessor.fetchToken(CPreprocessor.java:682)
+	at org.eclipse.cdt.internal.core.parser.scanner.CPreprocessor.nextToken(CPreprocessor.java:780)
+	at org.eclipse.cdt.internal.core.dom.parser.AbstractGNUSourceCodeParser.fetchToken(AbstractGNUSourceCodeParser.java:292)
+	at org.eclipse.cdt.internal.core.dom.parser.AbstractGNUSourceCodeParser.nextToken(AbstractGNUSourceCodeParser.java:331)
+	at org.eclipse.cdt.internal.core.dom.parser.AbstractGNUSourceCodeParser.acceptInactiveCodeBoundary(AbstractGNUSourceCodeParser.java:392)
+	at org.eclipse.cdt.internal.core.dom.parser.AbstractGNUSourceCodeParser.declarationList(AbstractGNUSourceCodeParser.java:1397)
+	at org.eclipse.cdt.internal.core.dom.parser.AbstractGNUSourceCodeParser.parseTranslationUnit(AbstractGNUSourceCodeParser.java:1368)
+	at org.eclipse.cdt.internal.core.dom.parser.AbstractGNUSourceCodeParser.translationUnit(AbstractGNUSourceCodeParser.java:1363)
+	at org.eclipse.cdt.internal.core.dom.parser.AbstractGNUSourceCodeParser.parse(AbstractGNUSourceCodeParser.java:688)
+	at org.eclipse.cdt.core.dom.parser.AbstractCLikeLanguage.getASTTranslationUnit(AbstractCLikeLanguage.java:171)
+	at org.eclipse.cdt.internal.core.model.TranslationUnit.getAST(TranslationUnit.java:886)
+	at org.eclipse.cdt.internal.core.model.TranslationUnit.getAST(TranslationUnit.java:843)
+	at org.eclipse.cdt.internal.core.model.ASTCache$1.run(ASTCache.java:361)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:47)
+	at org.eclipse.cdt.internal.core.model.ASTCache.createAST(ASTCache.java:354)
+	at org.eclipse.cdt.internal.core.model.ASTCache.getAST(ASTCache.java:175)
+	at org.eclipse.cdt.internal.core.model.ASTCache.acquireSharedAST(ASTCache.java:265)
+	at org.eclipse.cdt.internal.core.model.ASTCache.runOnAST(ASTCache.java:223)
+	at org.eclipse.cdt.internal.ui.editor.ASTProvider.runOnAST(ASTProvider.java:338)
+	at org.eclipse.cdt.internal.ui.viewsupport.SelectionListenerWithASTManager$PartListenerGroup.calculateASTandInform(SelectionListenerWithASTManager.java:166)
+	at org.eclipse.cdt.internal.ui.viewsupport.SelectionListenerWithASTManager$PartListenerGroup$1.run(SelectionListenerWithASTManager.java:139)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+!SUBENTRY 1 org.eclipse.cdt.core 4 0 2026-03-23 11:06:36.552
+!MESSAGE Corrupted database: Embedded_AI.1772006973124.pdom
+
+!ENTRY org.eclipse.cdt.core 4 0 2026-03-23 11:06:36.557
+!MESSAGE Error
+!STACK 1
+org.eclipse.core.runtime.CoreException: Corrupted database: Embedded_AI.1772006973124.pdom
+	at org.eclipse.cdt.internal.core.pdom.db.Database.databaseCorruptionDetected(Database.java:323)
+	at org.eclipse.cdt.internal.core.pdom.db.Database.getChunk(Database.java:303)
+	at org.eclipse.cdt.internal.core.pdom.db.BTree.accept(BTree.java:555)
+	at org.eclipse.cdt.internal.core.pdom.db.BTree.accept(BTree.java:541)
+	at org.eclipse.cdt.internal.core.pdom.dom.PDOMFile.findFiles(PDOMFile.java:771)
+	at org.eclipse.cdt.internal.core.pdom.PDOM.getFiles(PDOM.java:603)
+	at org.eclipse.cdt.internal.core.index.CIndex.getFiles(CIndex.java:260)
+	at org.eclipse.cdt.internal.core.index.IndexBasedFileContentProvider.selectIndexFile(IndexBasedFileContentProvider.java:178)
+	at org.eclipse.cdt.internal.core.index.IndexBasedFileContentProvider.getContentForInclusion(IndexBasedFileContentProvider.java:133)
+	at org.eclipse.cdt.internal.core.parser.scanner.CPreprocessor$1.checkFile(CPreprocessor.java:198)
+	at org.eclipse.cdt.internal.core.parser.scanner.CPreprocessor$1.checkFile(CPreprocessor.java:1)
+	at org.eclipse.cdt.internal.core.parser.scanner.CPreprocessor.findInclusion(CPreprocessor.java:1363)
+	at org.eclipse.cdt.internal.core.parser.scanner.CPreprocessor.executeInclude(CPreprocessor.java:1739)
+	at org.eclipse.cdt.internal.core.parser.scanner.CPreprocessor.executeDirective(CPreprocessor.java:1517)
+	at org.eclipse.cdt.internal.core.parser.scanner.CPreprocessor.internalFetchToken(CPreprocessor.java:981)
+	at org.eclipse.cdt.internal.core.parser.scanner.CPreprocessor.fetchToken(CPreprocessor.java:682)
+	at org.eclipse.cdt.internal.core.parser.scanner.CPreprocessor.nextToken(CPreprocessor.java:780)
+	at org.eclipse.cdt.internal.core.dom.parser.AbstractGNUSourceCodeParser.fetchToken(AbstractGNUSourceCodeParser.java:292)
+	at org.eclipse.cdt.internal.core.dom.parser.AbstractGNUSourceCodeParser.nextToken(AbstractGNUSourceCodeParser.java:331)
+	at org.eclipse.cdt.internal.core.dom.parser.AbstractGNUSourceCodeParser.acceptInactiveCodeBoundary(AbstractGNUSourceCodeParser.java:392)
+	at org.eclipse.cdt.internal.core.dom.parser.AbstractGNUSourceCodeParser.declarationList(AbstractGNUSourceCodeParser.java:1397)
+	at org.eclipse.cdt.internal.core.dom.parser.AbstractGNUSourceCodeParser.parseTranslationUnit(AbstractGNUSourceCodeParser.java:1368)
+	at org.eclipse.cdt.internal.core.dom.parser.AbstractGNUSourceCodeParser.translationUnit(AbstractGNUSourceCodeParser.java:1363)
+	at org.eclipse.cdt.internal.core.dom.parser.AbstractGNUSourceCodeParser.parse(AbstractGNUSourceCodeParser.java:688)
+	at org.eclipse.cdt.core.dom.parser.AbstractCLikeLanguage.getASTTranslationUnit(AbstractCLikeLanguage.java:171)
+	at org.eclipse.cdt.internal.core.model.TranslationUnit.getAST(TranslationUnit.java:886)
+	at org.eclipse.cdt.internal.core.model.TranslationUnit.getAST(TranslationUnit.java:843)
+	at org.eclipse.cdt.internal.core.model.ASTCache$1.run(ASTCache.java:361)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:47)
+	at org.eclipse.cdt.internal.core.model.ASTCache.createAST(ASTCache.java:354)
+	at org.eclipse.cdt.internal.core.model.ASTCache.getAST(ASTCache.java:175)
+	at org.eclipse.cdt.internal.core.model.ASTCache.acquireSharedAST(ASTCache.java:265)
+	at org.eclipse.cdt.internal.core.model.ASTCache.runOnAST(ASTCache.java:223)
+	at org.eclipse.cdt.internal.ui.editor.ASTProvider.runOnAST(ASTProvider.java:338)
+	at org.eclipse.cdt.internal.ui.viewsupport.SelectionListenerWithASTManager$PartListenerGroup.calculateASTandInform(SelectionListenerWithASTManager.java:166)
+	at org.eclipse.cdt.internal.ui.viewsupport.SelectionListenerWithASTManager$PartListenerGroup$1.run(SelectionListenerWithASTManager.java:139)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+!SUBENTRY 1 org.eclipse.cdt.core 4 0 2026-03-23 11:06:36.558
+!MESSAGE Corrupted database: Embedded_AI.1772006973124.pdom
+
+!ENTRY org.eclipse.cdt.core 4 0 2026-03-23 11:06:36.563
+!MESSAGE Error
+!STACK 1
+org.eclipse.core.runtime.CoreException: Corrupted database: Embedded_AI.1772006973124.pdom
+	at org.eclipse.cdt.internal.core.pdom.db.Database.databaseCorruptionDetected(Database.java:323)
+	at org.eclipse.cdt.internal.core.pdom.db.Database.getChunk(Database.java:303)
+	at org.eclipse.cdt.internal.core.pdom.db.BTree.accept(BTree.java:555)
+	at org.eclipse.cdt.internal.core.pdom.db.BTree.accept(BTree.java:541)
+	at org.eclipse.cdt.internal.core.pdom.dom.PDOMFile.findFiles(PDOMFile.java:771)
+	at org.eclipse.cdt.internal.core.pdom.PDOM.getFiles(PDOM.java:603)
+	at org.eclipse.cdt.internal.core.index.CIndex.getFiles(CIndex.java:260)
+	at org.eclipse.cdt.internal.core.index.IndexBasedFileContentProvider.selectIndexFile(IndexBasedFileContentProvider.java:178)
+	at org.eclipse.cdt.internal.core.index.IndexBasedFileContentProvider.getContentForInclusion(IndexBasedFileContentProvider.java:133)
+	at org.eclipse.cdt.internal.core.parser.scanner.CPreprocessor$1.checkFile(CPreprocessor.java:198)
+	at org.eclipse.cdt.internal.core.parser.scanner.CPreprocessor$1.checkFile(CPreprocessor.java:1)
+	at org.eclipse.cdt.internal.core.parser.scanner.CPreprocessor.findInclusion(CPreprocessor.java:1394)
+	at org.eclipse.cdt.internal.core.parser.scanner.CPreprocessor.executeInclude(CPreprocessor.java:1739)
+	at org.eclipse.cdt.internal.core.parser.scanner.CPreprocessor.executeDirective(CPreprocessor.java:1517)
+	at org.eclipse.cdt.internal.core.parser.scanner.CPreprocessor.internalFetchToken(CPreprocessor.java:981)
+	at org.eclipse.cdt.internal.core.parser.scanner.CPreprocessor.fetchToken(CPreprocessor.java:682)
+	at org.eclipse.cdt.internal.core.parser.scanner.CPreprocessor.nextToken(CPreprocessor.java:780)
+	at org.eclipse.cdt.internal.core.dom.parser.AbstractGNUSourceCodeParser.fetchToken(AbstractGNUSourceCodeParser.java:292)
+	at org.eclipse.cdt.internal.core.dom.parser.AbstractGNUSourceCodeParser.nextToken(AbstractGNUSourceCodeParser.java:331)
+	at org.eclipse.cdt.internal.core.dom.parser.AbstractGNUSourceCodeParser.acceptInactiveCodeBoundary(AbstractGNUSourceCodeParser.java:392)
+	at org.eclipse.cdt.internal.core.dom.parser.AbstractGNUSourceCodeParser.declarationList(AbstractGNUSourceCodeParser.java:1397)
+	at org.eclipse.cdt.internal.core.dom.parser.AbstractGNUSourceCodeParser.parseTranslationUnit(AbstractGNUSourceCodeParser.java:1368)
+	at org.eclipse.cdt.internal.core.dom.parser.AbstractGNUSourceCodeParser.translationUnit(AbstractGNUSourceCodeParser.java:1363)
+	at org.eclipse.cdt.internal.core.dom.parser.AbstractGNUSourceCodeParser.parse(AbstractGNUSourceCodeParser.java:688)
+	at org.eclipse.cdt.core.dom.parser.AbstractCLikeLanguage.getASTTranslationUnit(AbstractCLikeLanguage.java:171)
+	at org.eclipse.cdt.internal.core.model.TranslationUnit.getAST(TranslationUnit.java:886)
+	at org.eclipse.cdt.internal.core.model.TranslationUnit.getAST(TranslationUnit.java:843)
+	at org.eclipse.cdt.internal.core.model.ASTCache$1.run(ASTCache.java:361)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:47)
+	at org.eclipse.cdt.internal.core.model.ASTCache.createAST(ASTCache.java:354)
+	at org.eclipse.cdt.internal.core.model.ASTCache.getAST(ASTCache.java:175)
+	at org.eclipse.cdt.internal.core.model.ASTCache.acquireSharedAST(ASTCache.java:265)
+	at org.eclipse.cdt.internal.core.model.ASTCache.runOnAST(ASTCache.java:223)
+	at org.eclipse.cdt.internal.ui.editor.ASTProvider.runOnAST(ASTProvider.java:338)
+	at org.eclipse.cdt.internal.ui.viewsupport.SelectionListenerWithASTManager$PartListenerGroup.calculateASTandInform(SelectionListenerWithASTManager.java:166)
+	at org.eclipse.cdt.internal.ui.viewsupport.SelectionListenerWithASTManager$PartListenerGroup$1.run(SelectionListenerWithASTManager.java:139)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+!SUBENTRY 1 org.eclipse.cdt.core 4 0 2026-03-23 11:06:36.563
+!MESSAGE Corrupted database: Embedded_AI.1772006973124.pdom
+
+!ENTRY org.eclipse.cdt.core 4 0 2026-03-23 11:06:36.569
+!MESSAGE Error
+!STACK 1
+org.eclipse.core.runtime.CoreException: Corrupted database: Embedded_AI.1772006973124.pdom
+	at org.eclipse.cdt.internal.core.pdom.db.Database.databaseCorruptionDetected(Database.java:323)
+	at org.eclipse.cdt.internal.core.pdom.db.Database.getChunk(Database.java:303)
+	at org.eclipse.cdt.internal.core.pdom.db.BTree.accept(BTree.java:555)
+	at org.eclipse.cdt.internal.core.pdom.db.BTree.accept(BTree.java:541)
+	at org.eclipse.cdt.internal.core.pdom.dom.PDOMFile.findFiles(PDOMFile.java:771)
+	at org.eclipse.cdt.internal.core.pdom.PDOM.getFiles(PDOM.java:603)
+	at org.eclipse.cdt.internal.core.index.CIndex.getFiles(CIndex.java:260)
+	at org.eclipse.cdt.internal.core.index.IndexBasedFileContentProvider.selectIndexFile(IndexBasedFileContentProvider.java:178)
+	at org.eclipse.cdt.internal.core.index.IndexBasedFileContentProvider.getContentForInclusion(IndexBasedFileContentProvider.java:133)
+	at org.eclipse.cdt.internal.core.parser.scanner.CPreprocessor$1.checkFile(CPreprocessor.java:198)
+	at org.eclipse.cdt.internal.core.parser.scanner.CPreprocessor$1.checkFile(CPreprocessor.java:1)
+	at org.eclipse.cdt.internal.core.parser.scanner.CPreprocessor.findInclusion(CPreprocessor.java:1394)
+	at org.eclipse.cdt.internal.core.parser.scanner.CPreprocessor.executeInclude(CPreprocessor.java:1739)
+	at org.eclipse.cdt.internal.core.parser.scanner.CPreprocessor.executeDirective(CPreprocessor.java:1517)
+	at org.eclipse.cdt.internal.core.parser.scanner.CPreprocessor.internalFetchToken(CPreprocessor.java:981)
+	at org.eclipse.cdt.internal.core.parser.scanner.CPreprocessor.fetchToken(CPreprocessor.java:682)
+	at org.eclipse.cdt.internal.core.parser.scanner.CPreprocessor.nextToken(CPreprocessor.java:780)
+	at org.eclipse.cdt.internal.core.dom.parser.AbstractGNUSourceCodeParser.fetchToken(AbstractGNUSourceCodeParser.java:292)
+	at org.eclipse.cdt.internal.core.dom.parser.AbstractGNUSourceCodeParser.nextToken(AbstractGNUSourceCodeParser.java:331)
+	at org.eclipse.cdt.internal.core.dom.parser.AbstractGNUSourceCodeParser.acceptInactiveCodeBoundary(AbstractGNUSourceCodeParser.java:392)
+	at org.eclipse.cdt.internal.core.dom.parser.AbstractGNUSourceCodeParser.declarationList(AbstractGNUSourceCodeParser.java:1397)
+	at org.eclipse.cdt.internal.core.dom.parser.AbstractGNUSourceCodeParser.parseTranslationUnit(AbstractGNUSourceCodeParser.java:1368)
+	at org.eclipse.cdt.internal.core.dom.parser.AbstractGNUSourceCodeParser.translationUnit(AbstractGNUSourceCodeParser.java:1363)
+	at org.eclipse.cdt.internal.core.dom.parser.AbstractGNUSourceCodeParser.parse(AbstractGNUSourceCodeParser.java:688)
+	at org.eclipse.cdt.core.dom.parser.AbstractCLikeLanguage.getASTTranslationUnit(AbstractCLikeLanguage.java:171)
+	at org.eclipse.cdt.internal.core.model.TranslationUnit.getAST(TranslationUnit.java:886)
+	at org.eclipse.cdt.internal.core.model.TranslationUnit.getAST(TranslationUnit.java:843)
+	at org.eclipse.cdt.internal.core.model.ASTCache$1.run(ASTCache.java:361)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:47)
+	at org.eclipse.cdt.internal.core.model.ASTCache.createAST(ASTCache.java:354)
+	at org.eclipse.cdt.internal.core.model.ASTCache.getAST(ASTCache.java:175)
+	at org.eclipse.cdt.internal.core.model.ASTCache.acquireSharedAST(ASTCache.java:265)
+	at org.eclipse.cdt.internal.core.model.ASTCache.runOnAST(ASTCache.java:223)
+	at org.eclipse.cdt.internal.ui.editor.ASTProvider.runOnAST(ASTProvider.java:338)
+	at org.eclipse.cdt.internal.ui.viewsupport.SelectionListenerWithASTManager$PartListenerGroup.calculateASTandInform(SelectionListenerWithASTManager.java:166)
+	at org.eclipse.cdt.internal.ui.viewsupport.SelectionListenerWithASTManager$PartListenerGroup$1.run(SelectionListenerWithASTManager.java:139)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+!SUBENTRY 1 org.eclipse.cdt.core 4 0 2026-03-23 11:06:36.571
+!MESSAGE Corrupted database: Embedded_AI.1772006973124.pdom
+
+!ENTRY org.eclipse.cdt.core 4 0 2026-03-23 11:06:36.575
+!MESSAGE Error
+!STACK 1
+org.eclipse.core.runtime.CoreException: Corrupted database: Embedded_AI.1772006973124.pdom
+	at org.eclipse.cdt.internal.core.pdom.db.Database.databaseCorruptionDetected(Database.java:323)
+	at org.eclipse.cdt.internal.core.pdom.db.Database.getChunk(Database.java:303)
+	at org.eclipse.cdt.internal.core.pdom.db.BTree.accept(BTree.java:555)
+	at org.eclipse.cdt.internal.core.pdom.db.BTree.accept(BTree.java:541)
+	at org.eclipse.cdt.internal.core.pdom.dom.PDOMFile.findFiles(PDOMFile.java:771)
+	at org.eclipse.cdt.internal.core.pdom.PDOM.getFiles(PDOM.java:603)
+	at org.eclipse.cdt.internal.core.index.CIndex.getFiles(CIndex.java:260)
+	at org.eclipse.cdt.internal.core.index.IndexBasedFileContentProvider.selectIndexFile(IndexBasedFileContentProvider.java:178)
+	at org.eclipse.cdt.internal.core.index.IndexBasedFileContentProvider.getContentForInclusion(IndexBasedFileContentProvider.java:133)
+	at org.eclipse.cdt.internal.core.parser.scanner.CPreprocessor$1.checkFile(CPreprocessor.java:198)
+	at org.eclipse.cdt.internal.core.parser.scanner.CPreprocessor$1.checkFile(CPreprocessor.java:1)
+	at org.eclipse.cdt.internal.core.parser.scanner.CPreprocessor.findInclusion(CPreprocessor.java:1363)
+	at org.eclipse.cdt.internal.core.parser.scanner.CPreprocessor.executeInclude(CPreprocessor.java:1739)
+	at org.eclipse.cdt.internal.core.parser.scanner.CPreprocessor.executeDirective(CPreprocessor.java:1517)
+	at org.eclipse.cdt.internal.core.parser.scanner.CPreprocessor.internalFetchToken(CPreprocessor.java:981)
+	at org.eclipse.cdt.internal.core.parser.scanner.CPreprocessor.fetchToken(CPreprocessor.java:682)
+	at org.eclipse.cdt.internal.core.parser.scanner.CPreprocessor.nextToken(CPreprocessor.java:780)
+	at org.eclipse.cdt.internal.core.dom.parser.AbstractGNUSourceCodeParser.fetchToken(AbstractGNUSourceCodeParser.java:292)
+	at org.eclipse.cdt.internal.core.dom.parser.AbstractGNUSourceCodeParser.nextToken(AbstractGNUSourceCodeParser.java:331)
+	at org.eclipse.cdt.internal.core.dom.parser.AbstractGNUSourceCodeParser.acceptInactiveCodeBoundary(AbstractGNUSourceCodeParser.java:392)
+	at org.eclipse.cdt.internal.core.dom.parser.AbstractGNUSourceCodeParser.declarationList(AbstractGNUSourceCodeParser.java:1397)
+	at org.eclipse.cdt.internal.core.dom.parser.AbstractGNUSourceCodeParser.parseTranslationUnit(AbstractGNUSourceCodeParser.java:1368)
+	at org.eclipse.cdt.internal.core.dom.parser.AbstractGNUSourceCodeParser.translationUnit(AbstractGNUSourceCodeParser.java:1363)
+	at org.eclipse.cdt.internal.core.dom.parser.AbstractGNUSourceCodeParser.parse(AbstractGNUSourceCodeParser.java:688)
+	at org.eclipse.cdt.core.dom.parser.AbstractCLikeLanguage.getASTTranslationUnit(AbstractCLikeLanguage.java:171)
+	at org.eclipse.cdt.internal.core.model.TranslationUnit.getAST(TranslationUnit.java:886)
+	at org.eclipse.cdt.internal.core.model.TranslationUnit.getAST(TranslationUnit.java:843)
+	at org.eclipse.cdt.internal.core.model.ASTCache$1.run(ASTCache.java:361)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:47)
+	at org.eclipse.cdt.internal.core.model.ASTCache.createAST(ASTCache.java:354)
+	at org.eclipse.cdt.internal.core.model.ASTCache.getAST(ASTCache.java:175)
+	at org.eclipse.cdt.internal.core.model.ASTCache.acquireSharedAST(ASTCache.java:265)
+	at org.eclipse.cdt.internal.core.model.ASTCache.runOnAST(ASTCache.java:223)
+	at org.eclipse.cdt.internal.ui.editor.ASTProvider.runOnAST(ASTProvider.java:338)
+	at org.eclipse.cdt.internal.ui.viewsupport.SelectionListenerWithASTManager$PartListenerGroup.calculateASTandInform(SelectionListenerWithASTManager.java:166)
+	at org.eclipse.cdt.internal.ui.viewsupport.SelectionListenerWithASTManager$PartListenerGroup$1.run(SelectionListenerWithASTManager.java:139)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+!SUBENTRY 1 org.eclipse.cdt.core 4 0 2026-03-23 11:06:36.577
+!MESSAGE Corrupted database: Embedded_AI.1772006973124.pdom
+
+!ENTRY org.eclipse.cdt.core 4 0 2026-03-23 11:06:36.583
+!MESSAGE Error
+!STACK 1
+org.eclipse.core.runtime.CoreException: Corrupted database: Embedded_AI.1772006973124.pdom
+	at org.eclipse.cdt.internal.core.pdom.db.Database.databaseCorruptionDetected(Database.java:323)
+	at org.eclipse.cdt.internal.core.pdom.db.Database.getChunk(Database.java:303)
+	at org.eclipse.cdt.internal.core.pdom.db.BTree.accept(BTree.java:555)
+	at org.eclipse.cdt.internal.core.pdom.db.BTree.accept(BTree.java:541)
+	at org.eclipse.cdt.internal.core.pdom.dom.PDOMFile.findFiles(PDOMFile.java:771)
+	at org.eclipse.cdt.internal.core.pdom.PDOM.getFiles(PDOM.java:603)
+	at org.eclipse.cdt.internal.core.index.CIndex.getFiles(CIndex.java:260)
+	at org.eclipse.cdt.internal.core.index.IndexBasedFileContentProvider.selectIndexFile(IndexBasedFileContentProvider.java:178)
+	at org.eclipse.cdt.internal.core.index.IndexBasedFileContentProvider.getContentForInclusion(IndexBasedFileContentProvider.java:133)
+	at org.eclipse.cdt.internal.core.parser.scanner.CPreprocessor$1.checkFile(CPreprocessor.java:198)
+	at org.eclipse.cdt.internal.core.parser.scanner.CPreprocessor$1.checkFile(CPreprocessor.java:1)
+	at org.eclipse.cdt.internal.core.parser.scanner.CPreprocessor.findInclusion(CPreprocessor.java:1363)
+	at org.eclipse.cdt.internal.core.parser.scanner.CPreprocessor.executeInclude(CPreprocessor.java:1739)
+	at org.eclipse.cdt.internal.core.parser.scanner.CPreprocessor.executeDirective(CPreprocessor.java:1517)
+	at org.eclipse.cdt.internal.core.parser.scanner.CPreprocessor.internalFetchToken(CPreprocessor.java:981)
+	at org.eclipse.cdt.internal.core.parser.scanner.CPreprocessor.fetchToken(CPreprocessor.java:682)
+	at org.eclipse.cdt.internal.core.parser.scanner.CPreprocessor.nextToken(CPreprocessor.java:780)
+	at org.eclipse.cdt.internal.core.dom.parser.AbstractGNUSourceCodeParser.fetchToken(AbstractGNUSourceCodeParser.java:292)
+	at org.eclipse.cdt.internal.core.dom.parser.AbstractGNUSourceCodeParser.nextToken(AbstractGNUSourceCodeParser.java:331)
+	at org.eclipse.cdt.internal.core.dom.parser.AbstractGNUSourceCodeParser.acceptInactiveCodeBoundary(AbstractGNUSourceCodeParser.java:392)
+	at org.eclipse.cdt.internal.core.dom.parser.AbstractGNUSourceCodeParser.declarationList(AbstractGNUSourceCodeParser.java:1397)
+	at org.eclipse.cdt.internal.core.dom.parser.AbstractGNUSourceCodeParser.parseTranslationUnit(AbstractGNUSourceCodeParser.java:1368)
+	at org.eclipse.cdt.internal.core.dom.parser.AbstractGNUSourceCodeParser.translationUnit(AbstractGNUSourceCodeParser.java:1363)
+	at org.eclipse.cdt.internal.core.dom.parser.AbstractGNUSourceCodeParser.parse(AbstractGNUSourceCodeParser.java:688)
+	at org.eclipse.cdt.core.dom.parser.AbstractCLikeLanguage.getASTTranslationUnit(AbstractCLikeLanguage.java:171)
+	at org.eclipse.cdt.internal.core.model.TranslationUnit.getAST(TranslationUnit.java:886)
+	at org.eclipse.cdt.internal.core.model.TranslationUnit.getAST(TranslationUnit.java:843)
+	at org.eclipse.cdt.internal.core.model.ASTCache$1.run(ASTCache.java:361)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:47)
+	at org.eclipse.cdt.internal.core.model.ASTCache.createAST(ASTCache.java:354)
+	at org.eclipse.cdt.internal.core.model.ASTCache.getAST(ASTCache.java:175)
+	at org.eclipse.cdt.internal.core.model.ASTCache.acquireSharedAST(ASTCache.java:265)
+	at org.eclipse.cdt.internal.core.model.ASTCache.runOnAST(ASTCache.java:223)
+	at org.eclipse.cdt.internal.ui.editor.ASTProvider.runOnAST(ASTProvider.java:338)
+	at org.eclipse.cdt.internal.ui.viewsupport.SelectionListenerWithASTManager$PartListenerGroup.calculateASTandInform(SelectionListenerWithASTManager.java:166)
+	at org.eclipse.cdt.internal.ui.viewsupport.SelectionListenerWithASTManager$PartListenerGroup$1.run(SelectionListenerWithASTManager.java:139)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+!SUBENTRY 1 org.eclipse.cdt.core 4 0 2026-03-23 11:06:36.583
+!MESSAGE Corrupted database: Embedded_AI.1772006973124.pdom
+
+!ENTRY org.eclipse.cdt.core 4 0 2026-03-23 11:06:36.617
+!MESSAGE Error
+!STACK 1
+org.eclipse.core.runtime.CoreException: Corrupted database: Embedded_AI.1772006973124.pdom
+	at org.eclipse.cdt.internal.core.pdom.db.Database.databaseCorruptionDetected(Database.java:323)
+	at org.eclipse.cdt.internal.core.pdom.db.Database.getChunk(Database.java:303)
+	at org.eclipse.cdt.internal.core.pdom.db.BTree.accept(BTree.java:555)
+	at org.eclipse.cdt.internal.core.pdom.db.BTree.accept(BTree.java:541)
+	at org.eclipse.cdt.internal.core.pdom.dom.PDOMLinkage.getBindingsViaCache(PDOMLinkage.java:427)
+	at org.eclipse.cdt.internal.core.pdom.PDOM.findBindings(PDOM.java:1417)
+	at org.eclipse.cdt.internal.core.pdom.PDOM.findBindings(PDOM.java:1407)
+	at org.eclipse.cdt.internal.core.index.CIndex.findBindings(CIndex.java:650)
+	at org.eclipse.cdt.internal.core.index.CIndex.findBindings(CIndex.java:510)
+	at org.eclipse.cdt.internal.core.dom.parser.c.CScope.getBinding(CScope.java:285)
+	at org.eclipse.cdt.internal.core.dom.parser.c.CVisitor.lookup(CVisitor.java:1063)
+	at org.eclipse.cdt.internal.core.dom.parser.c.CVisitor.resolveBinding(CVisitor.java:846)
+	at org.eclipse.cdt.internal.core.dom.parser.c.CVisitor.createBinding(CVisitor.java:456)
+	at org.eclipse.cdt.internal.core.dom.parser.c.CASTName.resolveBinding(CASTName.java:66)
+	at org.eclipse.cdt.internal.core.dom.parser.c.CVisitor.createBaseType(CVisitor.java:1385)
+	at org.eclipse.cdt.internal.core.dom.parser.c.CVisitor.createType(CVisitor.java:1397)
+	at org.eclipse.cdt.internal.core.dom.parser.c.CVisitor.createType(CVisitor.java:1239)
+	at org.eclipse.cdt.internal.core.dom.parser.c.CVisitor.createType(CVisitor.java:1214)
+	at org.eclipse.cdt.internal.core.dom.parser.c.CVisitor.createBinding(CVisitor.java:757)
+	at org.eclipse.cdt.internal.core.dom.parser.c.CVisitor.createBinding(CVisitor.java:709)
+	at org.eclipse.cdt.internal.core.dom.parser.c.CVisitor.createBinding(CVisitor.java:463)
+	at org.eclipse.cdt.internal.core.dom.parser.c.CASTName.resolveBinding(CASTName.java:66)
+	at org.eclipse.cdt.internal.core.dom.parser.c.CScope.extractBinding(CScope.java:302)
+	at org.eclipse.cdt.internal.core.dom.parser.c.CScope.getBinding(CScope.java:266)
+	at org.eclipse.cdt.internal.core.dom.parser.c.CVisitor.lookup(CVisitor.java:1063)
+	at org.eclipse.cdt.internal.core.dom.parser.c.CVisitor.resolveBinding(CVisitor.java:846)
+	at org.eclipse.cdt.internal.core.dom.parser.c.CVisitor.createBinding(CVisitor.java:456)
+	at org.eclipse.cdt.internal.core.dom.parser.c.CASTName.resolveBinding(CASTName.java:66)
+	at org.eclipse.cdt.internal.core.dom.parser.c.CASTName.resolvePreBinding(CASTName.java:74)
+	at org.eclipse.cdt.internal.core.dom.parser.ASTAmbiguousNode.doResolveAmbiguity(ASTAmbiguousNode.java:130)
+	at org.eclipse.cdt.internal.core.dom.parser.ASTAmbiguousNode.resolveAmbiguity(ASTAmbiguousNode.java:87)
+	at org.eclipse.cdt.internal.core.dom.parser.c.CASTAmbiguityResolver.visit(CASTAmbiguityResolver.java:39)
+	at org.eclipse.cdt.internal.core.dom.parser.ASTAmbiguousNode.accept(ASTAmbiguousNode.java:70)
+	at org.eclipse.cdt.internal.core.dom.parser.c.CASTFunctionCallExpression.accept(CASTFunctionCallExpression.java:118)
+	at org.eclipse.cdt.internal.core.dom.parser.ASTEqualsInitializer.accept(ASTEqualsInitializer.java:64)
+	at org.eclipse.cdt.internal.core.dom.parser.c.CASTDeclarator.postAccept(CASTDeclarator.java:189)
+	at org.eclipse.cdt.internal.core.dom.parser.c.CASTDeclarator.accept(CASTDeclarator.java:179)
+	at org.eclipse.cdt.internal.core.dom.parser.c.CASTSimpleDeclaration.accept(CASTSimpleDeclaration.java:111)
+	at org.eclipse.cdt.internal.core.dom.parser.c.CASTDeclarationStatement.accept(CASTDeclarationStatement.java:82)
+	at org.eclipse.cdt.internal.core.dom.parser.c.CASTCompoundStatement.accept(CASTCompoundStatement.java:89)
+	at org.eclipse.cdt.internal.core.dom.parser.c.CASTFunctionDefinition.accept(CASTFunctionDefinition.java:141)
+	at org.eclipse.cdt.internal.core.dom.parser.ASTTranslationUnit.accept(ASTTranslationUnit.java:289)
+	at org.eclipse.cdt.internal.core.dom.parser.c.CASTTranslationUnit.resolveAmbiguities(CASTTranslationUnit.java:113)
+	at org.eclipse.cdt.internal.core.dom.parser.AbstractGNUSourceCodeParser.resolveAmbiguities(AbstractGNUSourceCodeParser.java:707)
+	at org.eclipse.cdt.internal.core.dom.parser.AbstractGNUSourceCodeParser.parse(AbstractGNUSourceCodeParser.java:690)
+	at org.eclipse.cdt.core.dom.parser.AbstractCLikeLanguage.getASTTranslationUnit(AbstractCLikeLanguage.java:171)
+	at org.eclipse.cdt.internal.core.model.TranslationUnit.getAST(TranslationUnit.java:886)
+	at org.eclipse.cdt.internal.core.model.TranslationUnit.getAST(TranslationUnit.java:843)
+	at org.eclipse.cdt.internal.core.model.ASTCache$1.run(ASTCache.java:361)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:47)
+	at org.eclipse.cdt.internal.core.model.ASTCache.createAST(ASTCache.java:354)
+	at org.eclipse.cdt.internal.core.model.ASTCache.getAST(ASTCache.java:175)
+	at org.eclipse.cdt.internal.core.model.ASTCache.acquireSharedAST(ASTCache.java:265)
+	at org.eclipse.cdt.internal.core.model.ASTCache.runOnAST(ASTCache.java:223)
+	at org.eclipse.cdt.internal.ui.editor.ASTProvider.runOnAST(ASTProvider.java:338)
+	at org.eclipse.cdt.internal.ui.viewsupport.SelectionListenerWithASTManager$PartListenerGroup.calculateASTandInform(SelectionListenerWithASTManager.java:166)
+	at org.eclipse.cdt.internal.ui.viewsupport.SelectionListenerWithASTManager$PartListenerGroup$1.run(SelectionListenerWithASTManager.java:139)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+!SUBENTRY 1 org.eclipse.cdt.core 4 0 2026-03-23 11:06:36.619
+!MESSAGE Corrupted database: Embedded_AI.1772006973124.pdom
+
+!ENTRY org.eclipse.cdt.core 4 0 2026-03-23 11:06:36.622
+!MESSAGE Error
+!STACK 1
+org.eclipse.core.runtime.CoreException: Corrupted database: Embedded_AI.1772006973124.pdom
+	at org.eclipse.cdt.internal.core.pdom.db.Database.databaseCorruptionDetected(Database.java:323)
+	at org.eclipse.cdt.internal.core.pdom.db.Database.getChunk(Database.java:303)
+	at org.eclipse.cdt.internal.core.pdom.db.BTree.accept(BTree.java:555)
+	at org.eclipse.cdt.internal.core.pdom.db.BTree.accept(BTree.java:541)
+	at org.eclipse.cdt.internal.core.pdom.dom.PDOMLinkage.getBindingsViaCache(PDOMLinkage.java:427)
+	at org.eclipse.cdt.internal.core.pdom.PDOM.findBindings(PDOM.java:1417)
+	at org.eclipse.cdt.internal.core.pdom.PDOM.findBindings(PDOM.java:1407)
+	at org.eclipse.cdt.internal.core.index.CIndex.findBindings(CIndex.java:650)
+	at org.eclipse.cdt.internal.core.index.CIndex.findBindings(CIndex.java:510)
+	at org.eclipse.cdt.internal.core.dom.parser.c.CScope.getBinding(CScope.java:285)
+	at org.eclipse.cdt.internal.core.dom.parser.c.CVisitor.lookup(CVisitor.java:1063)
+	at org.eclipse.cdt.internal.core.dom.parser.c.CVisitor.resolveBinding(CVisitor.java:846)
+	at org.eclipse.cdt.internal.core.dom.parser.c.CVisitor.createBinding(CVisitor.java:456)
+	at org.eclipse.cdt.internal.core.dom.parser.c.CASTName.resolveBinding(CASTName.java:66)
+	at org.eclipse.cdt.internal.core.dom.parser.c.CVisitor.createBaseType(CVisitor.java:1385)
+	at org.eclipse.cdt.internal.core.dom.parser.c.CVisitor.createType(CVisitor.java:1397)
+	at org.eclipse.cdt.internal.core.dom.parser.c.CVisitor.createType(CVisitor.java:1239)
+	at org.eclipse.cdt.internal.core.dom.parser.c.CVisitor.createType(CVisitor.java:1214)
+	at org.eclipse.cdt.internal.core.dom.parser.c.CVisitor.createBinding(CVisitor.java:757)
+	at org.eclipse.cdt.internal.core.dom.parser.c.CVisitor.createBinding(CVisitor.java:709)
+	at org.eclipse.cdt.internal.core.dom.parser.c.CVisitor.createBinding(CVisitor.java:463)
+	at org.eclipse.cdt.internal.core.dom.parser.c.CASTName.resolveBinding(CASTName.java:66)
+	at org.eclipse.cdt.internal.core.dom.parser.c.CScope.extractBinding(CScope.java:302)
+	at org.eclipse.cdt.internal.core.dom.parser.c.CScope.getBinding(CScope.java:266)
+	at org.eclipse.cdt.internal.core.dom.parser.c.CVisitor.lookup(CVisitor.java:1063)
+	at org.eclipse.cdt.internal.core.dom.parser.c.CVisitor.resolveBinding(CVisitor.java:837)
+	at org.eclipse.cdt.internal.core.dom.parser.c.CVisitor.createBinding(CVisitor.java:454)
+	at org.eclipse.cdt.internal.core.dom.parser.c.CASTName.resolveBinding(CASTName.java:66)
+	at org.eclipse.cdt.internal.core.dom.parser.c.CASTName.resolvePreBinding(CASTName.java:74)
+	at org.eclipse.cdt.internal.core.dom.parser.ASTAmbiguousNode.doResolveAmbiguity(ASTAmbiguousNode.java:130)
+	at org.eclipse.cdt.internal.core.dom.parser.ASTAmbiguousNode.resolveAmbiguity(ASTAmbiguousNode.java:87)
+	at org.eclipse.cdt.internal.core.dom.parser.c.CASTAmbiguityResolver.visit(CASTAmbiguityResolver.java:39)
+	at org.eclipse.cdt.internal.core.dom.parser.ASTAmbiguousNode.accept(ASTAmbiguousNode.java:70)
+	at org.eclipse.cdt.internal.core.dom.parser.c.CASTCompoundStatement.accept(CASTCompoundStatement.java:89)
+	at org.eclipse.cdt.internal.core.dom.parser.c.CASTFunctionDefinition.accept(CASTFunctionDefinition.java:141)
+	at org.eclipse.cdt.internal.core.dom.parser.ASTTranslationUnit.accept(ASTTranslationUnit.java:289)
+	at org.eclipse.cdt.internal.core.dom.parser.c.CASTTranslationUnit.resolveAmbiguities(CASTTranslationUnit.java:113)
+	at org.eclipse.cdt.internal.core.dom.parser.AbstractGNUSourceCodeParser.resolveAmbiguities(AbstractGNUSourceCodeParser.java:707)
+	at org.eclipse.cdt.internal.core.dom.parser.AbstractGNUSourceCodeParser.parse(AbstractGNUSourceCodeParser.java:690)
+	at org.eclipse.cdt.core.dom.parser.AbstractCLikeLanguage.getASTTranslationUnit(AbstractCLikeLanguage.java:171)
+	at org.eclipse.cdt.internal.core.model.TranslationUnit.getAST(TranslationUnit.java:886)
+	at org.eclipse.cdt.internal.core.model.TranslationUnit.getAST(TranslationUnit.java:843)
+	at org.eclipse.cdt.internal.core.model.ASTCache$1.run(ASTCache.java:361)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:47)
+	at org.eclipse.cdt.internal.core.model.ASTCache.createAST(ASTCache.java:354)
+	at org.eclipse.cdt.internal.core.model.ASTCache.getAST(ASTCache.java:175)
+	at org.eclipse.cdt.internal.core.model.ASTCache.acquireSharedAST(ASTCache.java:265)
+	at org.eclipse.cdt.internal.core.model.ASTCache.runOnAST(ASTCache.java:223)
+	at org.eclipse.cdt.internal.ui.editor.ASTProvider.runOnAST(ASTProvider.java:338)
+	at org.eclipse.cdt.internal.ui.viewsupport.SelectionListenerWithASTManager$PartListenerGroup.calculateASTandInform(SelectionListenerWithASTManager.java:166)
+	at org.eclipse.cdt.internal.ui.viewsupport.SelectionListenerWithASTManager$PartListenerGroup$1.run(SelectionListenerWithASTManager.java:139)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+!SUBENTRY 1 org.eclipse.cdt.core 4 0 2026-03-23 11:06:36.623
+!MESSAGE Corrupted database: Embedded_AI.1772006973124.pdom
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2026-03-23 11:06:38.335
+!MESSAGE Started RMI Server, listening on port 41337
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-23 11:07:05.639
+!MESSAGE Executed PowerShell command powershell.exe -Command "Get-CimInstance -ClassName Win32_SerialPort | Select-Object -ExpandProperty DeviceID":
+COM4
+COM6
+COM5
+COM10
+
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-23 11:07:05.639
+!MESSAGE port: COM4
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-23 11:07:05.642
+!MESSAGE port: COM6
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-23 11:07:05.642
+!MESSAGE port: COM5
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-23 11:07:05.644
+!MESSAGE port: COM10
